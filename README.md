@@ -1,1 +1,3 @@
 # Ski-cialMedia
+
+Jared Henderson
