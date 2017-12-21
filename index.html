@@ -14,6 +14,9 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
         <!-- or -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+        <!--Link to firebase -->
+        <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
         
         <title>Ski-cial Media</title>
 
@@ -66,7 +69,9 @@
                     <div class="panel-body">
                         Map
                     </div>
-                    
+                    <div>
+                        
+                    </div>
                 </div>
             </div>
 
@@ -88,10 +93,21 @@
            
        </div>
        
+       
+       <div class="row">
+           
+           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="map">
+               
+           </div>
+           
+       </div>
+       
 
     </div>
-       
+    
     <script src="./assets/logic.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGFZJ4_F1ujKk_g57Xc0npkyrComAgsMg&callback=initMap">
+    </script>
     </script>  
     </body>
 </html>

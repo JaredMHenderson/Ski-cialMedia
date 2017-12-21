@@ -3,3 +3,6 @@
     background: url("./images/chris-biron-99839.jpg") no-repeat center center/cover;
 }
 
+#map {
+    height: 100%;
+}
