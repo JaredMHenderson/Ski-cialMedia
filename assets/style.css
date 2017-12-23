@@ -57,16 +57,34 @@
 
 #map-image {
 	z-index: 1;
-	width:200px;
+	height:100%;
+	width:100%;
 	background-color: green;
 	grid-column: 4 / 5;
 	grid-row: 1 / 2;
 }
 
+.sidebar {
+	/*background-color: yellow;*/
+/*	display:grid;*/
+
+display:grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 150px 50px 200px 250px;
+	grid-gap:.5rem;
+	/*grid-template-columns: 1fr;
+	grid-column: 4 / 5;
+	grid-row: 1 / 5;*/
+	height:100%;
+	width:100%;
+
+}
 #search {
 	background-color: yellow;
 	grid-column: 4 / 5;
 	grid-row: 2 / 3;
+	height:100%;
+	width:100%;
 }
 
 #sign-in {
