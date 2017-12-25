@@ -7,32 +7,57 @@
 
 }
 
-/*@media(min-width: 425px) {
+@media(min-width: 100px) {
 	.grid {
-		grid-template-columns: 3fr 1fr;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-rows: 50px 50px 200px 250px;
+	}
+
+@media(min-width: 425px) {
+	.grid {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-rows: 50px 50px 200px 250px;
 	}
 }
 
 @media(min-width: 600px) {
 	.grid {
-		grid-template-columns: 3fr 1fr;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-rows: 150px 50px 200px 250px;
 	}
 }
 
 @media(min-width: 900px) {
 	.grid {
-		grid-template-columns: 3fr 1fr;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-rows: 150px 50px 200px 250px;
 	}
-}*/
+}
 
 
 #header {
+	
 
+	font-family: veranda;
 	text-align:center;
 	display:grid;
-	background-color:blue;
 	grid-column: 1 / 4;
 	grid-row: 1 / 2;
+}
+
+#header-text {
+	z-index: 1;
+	color:white;
+	margin-top:-100px;
+	font-size:50px;
+	/*margin-left:-50%;*/
+}
+
+#header img {
+	z-index: -1;
+	width:100%;
+	margin-top:-125px;
+	opacity: .8;
 }
 
 
@@ -45,21 +70,36 @@
 }
 
 #home {
-	background-color: red;
+	background-color: black;
+	font-family:veranda;
+	color:white;
+	box-sizing: border-box;
+	padding-top:5px;
+	font-size:25px;
 	grid-column: 1 / 2;
 	grid-row: 2 / 3;
 	text-align: center;
 }
 
 #resorts {
-	background-color: red;
+	background-color: black;
+	font-family:veranda;
+	color:white;
+	box-sizing: border-box;
+	padding-top:5px;
+	font-size:25px;
 	grid-column: 2 / 3;
 	grid-row: 2 / 3;
 	text-align: center;
 }
 
 #links {
-	background-color: red;
+	background-color: black;
+	font-family:veranda;
+	color:white;
+	box-sizing: border-box;
+	padding-top:5px;
+	font-size:25px;
 	grid-column: 3 / 4;
 	grid-row: 2 / 3;
 	text-align: center;
@@ -92,23 +132,56 @@
 
 }*/
 #search {
-	background-color: yellow;
+	background-color: black;
+	color: white;
+	font-family: veranda;
+	font-style:bold;
+	box-sizing: border-box;
 	grid-column: 4 / 5;
 	grid-row: 2 / 3;
 	height:100%;
 	width:100%;
+	padding-left:5%;
 }
 
 #sign-in {
-	background-color: yellow;
+	box-sizing: border-box;
+	background-color: #6491b9;
+	font-family:times;
+	border-size:5px;
+	border-color: black;
 	grid-column: 4 / 5;
 	grid-row: 3 / 4;
+	line-height:1.5em;
+	padding:5%;
+	border-width: 5px;
+	border-color:black;
 }
 
+#sign-in h2 {
+	margin-top:0%;
+	color:white;
+}
+
+#sign-in input{
+	width:100px;
+	font-family:veranda;
+	
+
+}
+
+
 #recent-searches {
-	background-color: yellow;
+	box-sizing: border-box;
+	background-color: #6491b9;
 	grid-column: 4 / 5;
 	grid-row: 4 / 5;
+	padding:5%;
+}
+
+#recent-searches h2 {
+	margin-top:0%;
+	color:white;
 }
 
 
@@ -131,13 +204,21 @@
 #list {
 	 
 	 z-index: 1;
-	background-color:purple;
+	border:5px black;
 	grid-column: 3 / 4;
 	grid-row: 3 / 5;
 
 }
 
 #footer {
+	
+	box-sizing: border-box;
+	height:50px;
+	color:white;
+	background-color: #6491b9;
 	text-align:center;
+	padding:15px;
+	margin-top:10px;
+
 }
 
