@@ -53,7 +53,7 @@
           </li>
 
           <li>
-            <a id="links" href="links.html">Links</a>
+            <a id="links" href="./links.html">Links</a>
           </li>
                   <!-- </nav> -->
           <!-- </div> --> 
@@ -61,7 +61,8 @@
 
 
         <!-- <div class="sidebar"> -->
-        
+        <div id="map-image"> <!-- aka empty green box in the top right -->
+        </div> <!-- map-image -->
 
       
         <div id="search">
@@ -108,7 +109,7 @@
        <!-- XXXXXXXXXXXXXXXXXXXXXXXXXX MAIN CONTENT AREA XXXXXXXXXXXXXXXXXXXXXXXXXX -->
         <!-- <div id="main-content-area"> -->
         <div id="map"> 
-          MAP
+          NOT MAP
         </div>  <!-- map -->
 
         <div id="list"> List
@@ -120,18 +121,7 @@
       </div> <!-- end of grid-- >
           <!-- </div> main-content-area -->
     </div>
-    <script>
-       /* this function must be created before the API is loaded (otherwise callback is lost) */
-      function myMap() {
-        var mapProp = {
-            center: new google.maps.LatLng(39.800,-106.200),
-            zoom: 8,
-        };
-        var map = new google.maps.Map(document.getElementById("map"),mapProp);
-      }
-    </script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzxrQ1LvZFppwAKMvIF3Yom_r--aECrM&callback=myMap"></script>    
+ 
   </body>
 </html>
 
