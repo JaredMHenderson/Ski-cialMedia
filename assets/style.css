@@ -1,0 +1,215 @@
+
+body {
+	background-color: white;
+}
+
+#container {
+	width: 1140px;
+	margin: auto;
+}
+
+.grid {
+	display:grid;
+
+			
+	grid-template-areas:
+		'header header header header'
+		'nav    nav    nav    srch  '
+		'map    map    list   login '
+		'map    map    list   rcntsrch '
+		'ftr    ftr    ftr    ftr';
+
+	grid-gap:.5rem;
+}
+
+#header {
+	font-family: veranda;
+	color:white;
+	padding-top:15px;
+	text-align:center;
+	grid-area: header;
+	position: relative;
+	background-color: #4286f4;
+
+}
+
+.navbar {
+	grid-area: nav;
+	padding: 5px;
+	background-color: black;
+}
+.dropdown {
+	display: none;
+}
+.dropdown div {
+	padding: 5px;
+}
+.dropdown div:hover {
+	color: white;
+	background-color: #4286f4;
+}
+.navbar li {
+	display: inline-block;
+	margin-left: 50px;
+	margin-top: 7px;
+	color: white;
+	padding: 5px;
+}
+.navbar li a {
+	text-decoration: none;
+	color:white;
+	color: inherit;
+}
+.navbar li:hover {
+	color: white;
+	background-color: #4286f4;
+}
+#resorts {
+	position: relative;
+}
+#resorts:hover div {
+	display: block;
+}
+.dropdown {
+	position: absolute;
+	left: 0px;
+	top: calc(1em + 10px);
+	background-color: #4286f4;
+	z-index: 999;
+}
+
+
+#search {
+	grid-area: srch;
+	background-color: black;
+	color:white;
+	padding: 5px;
+}
+
+#sign-in {
+	grid-area: login;
+	background-color: #4286f4;
+	padding: 5px;
+}
+
+#sign-in h2{
+	color:white;
+	padding-left:10px;
+}
+
+#recent-searches {
+	grid-area: rcntsrch;
+	background-color: #4286f4;
+	padding: 5px;
+}
+
+#recent-searches h2{
+	color:white;
+	padding-left:10px;
+}
+
+#map {
+	grid-area: map;
+	background-color: #dddddd;
+}
+
+#list {
+	grid-area: list;
+	background-color: #dddddd;
+}
+
+#footer {
+	grid-area: ftr;
+	text-align:center;
+	color:white;
+	background-color: #4286f4;
+	padding: 5px;
+}
+
+
+#header img {
+	z-index: -1;
+	width:100%;
+	opacity: .8;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+}
+
+
+
+@media(max-width: 1150px) {
+	/* max-width 1150 means it ONLY does this until it gets larger than 1150, then it doesn't */
+
+	#container {
+		width: 900px;
+		margin: auto;
+	}
+
+
+	.grid {
+		
+		/*grid-template-columns:1fr 1fr;*/
+		grid-template-rows: 100px 50px 200px 200px 50px;
+		grid-template-areas:
+			"header  header  header"
+			"nav      nav    srch"
+			"map      map   login"   
+			"list     list   rcntsrch"
+			"ftr      ftr     ftr";
+			
+	}
+
+}
+
+@media(max-width: 900px) {
+	/* max-width 1150 means it ONLY does this until it gets larger than 1150, then it doesn't */
+
+	#container {
+		width: 600px;
+		margin: auto;
+	}
+
+	.grid {
+		
+		grid-template-rows: 100px 50px 200px 200px 50px;
+		grid-template-areas:
+			"header    header"
+			"nav       srch   "
+			"map       login   "   
+			"list      rcntsrch  "
+			"ftr       ftr";
+	}
+}
+
+
+
+@media(max-width: 600px) {
+
+	
+	#container {
+		width: 480px;
+		
+		margin: auto;
+	}
+
+	.grid {
+		
+		/*grid-template-columns: 1fr 1fr 1fr 1fr;*/
+		grid-template-rows: 100px 50px 200px 250px 50px 200px 200px 50px;
+		grid-template-areas:
+			"header"
+			"nav"
+			"login"
+			"map"   
+			"srch"
+			"list"
+			"rcntsrch"
+			"ftr";
+			
+	}
+}
+
+
+
+
