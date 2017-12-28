@@ -69,8 +69,16 @@
                     <div class="panel-body">
                         Map
                     </div>
-                    <div>
-                        
+                    
+                    <div id="mapDiv">
+                        <iframe class="hidden" id="coloradoMap" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1582011.2355678447!2d-105.87650225767516!3d39.245920359019465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1scolorado+ski+resorts!5e0!3m2!1sen!2sus!4v1514478559265"
+                            width="100%" height="325" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+                        <iframe class="hidden" id="utahMap" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1545845.3140798567!2d-111.62354521752188!3d40.82293059135207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sutah+ski+resorts!5e0!3m2!1sen!2sus!4v1514478697444"
+                            width="100%" height="325" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+                            <iframe class="hidden" id="californiaMap" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3194557.970193064!2d-120.34538888074741!3d38.56405884580367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1scalifornia+ski+resorts!5e0!3m2!1sen!2sus!4v1514478293456"
+                                width="100%" height="325" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -78,8 +86,13 @@
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        Basic panel example
+                        Popular Resort States
                     </div>
+                    
+                    <button id="coloradoButton" type="button" class="btn btn-default">Colorado</button>
+                    <button id="utahButton" type="button" class="btn btn-default">Utah</button>
+                    <button id="californiaButton" type="button" class="btn btn-default">California</button>
+                    
                 </div>
             </div>
 
@@ -106,7 +119,8 @@
     </div>
     
     <script src="./assets/logic.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGFZJ4_F1ujKk_g57Xc0npkyrComAgsMg&callback=initMap">
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGFZJ4_F1ujKk_g57Xc0npkyrComAgsMg&callback=initMap"> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGFZJ4_F1ujKk_g57Xc0npkyrComAgsMg&libraries=places&callback=initMap" async defer></script>
     </script>
     </script>  
     </body>
