@@ -1,6 +1,6 @@
 
 body {
-	background-color: white;
+	background-color: grey;
 }
 
 #container {
@@ -11,7 +11,7 @@ body {
 .grid {
 	display:grid;
 
-			
+	grid-template-rows: 100px 50px 200px 200px 50px;		
 	grid-template-areas:
 		'header header header header'
 		'nav    nav    nav    srch  '
@@ -33,6 +33,11 @@ body {
 
 }
 
+#header-text {
+	margin-top:-20px;
+	text-align:center;
+}
+
 .navbar {
 	grid-area: nav;
 	padding: 5px;
@@ -50,13 +55,14 @@ body {
 }
 .navbar li {
 	display: inline-block;
-	margin-left: 50px;
+	margin-left: 5%;
 	margin-top: 7px;
 	color: white;
 	padding: 5px;
 }
 .navbar li a {
 	text-decoration: none;
+	text-align:center;
 	color:white;
 	color: inherit;
 }
@@ -70,6 +76,14 @@ body {
 #resorts:hover div {
 	display: block;
 }
+
+#links {
+	position: relative;
+}
+#links:hover div {
+	display: block;
+}
+
 .dropdown {
 	position: absolute;
 	left: 0px;
@@ -95,7 +109,35 @@ body {
 #sign-in h2{
 	color:white;
 	padding-left:10px;
+/*	margin-top:5px;
+	margin-bottom:5px;*/
 }
+
+#sign-in #name{
+	width:200px;
+	margin-left:20px;
+	margin-bottom:5px;
+}
+
+#sign-in #email{
+	width:200px;
+	margin-left:20px;
+	margin-bottom:5px;
+}
+
+#sign-in #password{
+	width:200px;
+	margin-left:0px;
+	margin-bottom:5px;
+}
+
+
+#submit {
+ 	width:100px;
+ 	/*float:right;*/
+ 	margin-right:50px;
+}
+
 
 #recent-searches {
 	grid-area: rcntsrch;
@@ -166,7 +208,7 @@ body {
 	/* max-width 1150 means it ONLY does this until it gets larger than 1150, then it doesn't */
 
 	#container {
-		width: 600px;
+		width: 700px;
 		margin: auto;
 	}
 
@@ -188,7 +230,7 @@ body {
 
 	
 	#container {
-		width: 480px;
+		width: 500px;
 		
 		margin: auto;
 	}
@@ -196,20 +238,62 @@ body {
 	.grid {
 		
 		/*grid-template-columns: 1fr 1fr 1fr 1fr;*/
-		grid-template-rows: 100px 50px 200px 250px 50px 200px 200px 50px;
+		grid-template-rows: 100px 50px 250px 50px 200px 200px 200px 50px;
 		grid-template-areas:
 			"header"
 			"nav"
-			"login"
 			"map"   
 			"srch"
 			"list"
+			"login"
 			"rcntsrch"
 			"ftr";
 			
 	}
 }
 
+.fallingSnow span {	
+    display: inline-block;
 
+    width: 20px;
+    height: 20px;
+    margin: -300px 60px 54px -34px;
+ 
+    background:url("images/snowflake.png");
+ 
+    -webkit-animation: fallingSnow 12s  linear;
+    -moz-animation: fallingSnow 12s  linear;
+}
 
+.fallingSnow span:nth-child(5n+5) {
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+}
 
+.fallingSnow span:nth-child(3n+2) {
+    -webkit-animation-delay: 1.5s;
+    -moz-animation-delay: 1.5s;
+}
+
+.fallingSnow span:nth-child(2n+5) {
+    -webkit-animation-delay: 1.7s;
+    -moz-animation-delay: 1.7s;
+}
+
+@-webkit-keyframes fallingSnow {
+  0% {
+    opacity: 1;
+
+	-webkit-transform: translate(0, 0px) rotateZ(0deg);
+  }
+  75% {
+    opacity: 1;
+
+	-webkit-transform: translate(100px, 600px) rotateZ(270deg); 
+  }
+  100% {
+    opacity: 0;
+
+	-webkit-transform: translate(150px, 800px) rotateZ(360deg);
+  }
+}
