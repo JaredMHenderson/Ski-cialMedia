@@ -4,14 +4,19 @@ body {
 }
 
 #container {
-	width: 1140px;
+	width: 1150px;
 	margin: auto;
+}
+
+#logo {
+	width:20px;
 }
 
 .grid {
 	display:grid;
 
-	grid-template-rows: 100px 50px 200px 200px 50px;		
+	grid-template-rows: 100px 50px 250px 250px 50px;
+	grid-template-columns: 275px 275px 275px 300px;		
 	grid-template-areas:
 		'header header header header'
 		'nav    nav    nav    srch  '
@@ -33,9 +38,17 @@ body {
 
 }
 
-#header-text {
-	margin-top:-20px;
+#header h1{
+	margin-top:-35px;
 	text-align:center;
+	color:white;
+}
+
+#header h4{
+	
+	text-align:center;
+	margin-top: -15px;
+	color:#2b2b2b;
 }
 
 .navbar {
@@ -51,7 +64,7 @@ body {
 }
 .dropdown div:hover {
 	color: white;
-	background-color: #4286f4;
+	background-color: #2b2b2b;				
 }
 .navbar li {
 	display: inline-block;
@@ -69,7 +82,7 @@ body {
 }
 .navbar li:hover {
 	color: white;
-	background-color: #4286f4;
+	background-color: #277ca3;
 }
 #resorts {
 	position: relative;
@@ -89,7 +102,7 @@ body {
 	position: absolute;
 	left: 0px;
 	top: calc(1em + 10px);
-	background-color: #4286f4;
+	background-color: #277ca3;
 	z-index: 999;
 }
 
@@ -146,6 +159,13 @@ body {
 	width:150px;
 	margin-left:2px;
 	margin-bottom:5px;
+}
+
+#sign-in h4 {
+	font-family:trebuchet ms;
+	font-size:14px;
+	padding-left:5px;
+	color:#2b2b2b;
 }
 
 
@@ -213,7 +233,7 @@ body {
 		margin: auto;
 	}
 
-		#header-text {
+		#header h1{
 		margin-top:-35px;
 	}
 
@@ -223,12 +243,13 @@ body {
 	.grid {
 		
 		/*grid-template-columns:1fr 1fr;*/
-		grid-template-rows: 100px 50px 200px 200px 50px;
+		grid-template-rows: 100px 50px 250px 250px 50px;
+		grid-template-columns: 300px 300px 300px;
 		grid-template-areas:
 			"header  header  header"
 			"nav      nav    srch"
-			"map      map   login"   
-			"list     list   rcntsrch"
+			"map      list   login"   
+			"map     list   rcntsrch"
 			"ftr      ftr     ftr";
 			
 	}
@@ -243,13 +264,14 @@ body {
 		margin: auto;
 	}
 
-	#header-text {
+	#header h1{
 		margin-top:-35px;
 	}
 
 	.grid {
 		
-		grid-template-rows: 100px 50px 200px 200px 50px;
+		grid-template-rows: 100px 50px 250px 400px 50px;
+		grid-template-columns: 400px 300px;
 		grid-template-areas:
 			"header    header"
 			"nav       srch   "
@@ -269,14 +291,15 @@ body {
 		margin: auto;
 	}
 
-	#header-text {
-		margin-top:-50px;
+	#header h1 {
+		margin-top:-55px;
 	}
 
 	.grid {
 		
 		/*grid-template-columns: 1fr 1fr 1fr 1fr;*/
-		grid-template-rows: 100px 50px 250px 50px 200px 200px 200px 50px;
+		grid-template-rows: 100px 50px 250px 50px 450px 250px 250px 50px;
+		grid-template-columns: 450px;
 		grid-template-areas:
 			"header"
 			"nav"
