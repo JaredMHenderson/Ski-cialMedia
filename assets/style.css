@@ -1,6 +1,6 @@
 
 body {
-	background-color: grey;
+	background-color: white;
 }
 
 #container {
@@ -23,13 +23,13 @@ body {
 }
 
 #header {
-	font-family: veranda;
+	font-family: trebuchet ms;
 	color:white;
-	padding-top:15px;
+	padding-top:35px;
 	text-align:center;
 	grid-area: header;
 	position: relative;
-	background-color: #4286f4;
+	background-color: #277ca3;                      /*   HEADER COLOR*/
 
 }
 
@@ -41,7 +41,7 @@ body {
 .navbar {
 	grid-area: nav;
 	padding: 5px;
-	background-color: black;
+	background-color: #2b2b2b;
 }
 .dropdown {
 	display: none;
@@ -55,6 +55,7 @@ body {
 }
 .navbar li {
 	display: inline-block;
+	font-family:trebuchet ms;
 	margin-left: 5%;
 	margin-top: 7px;
 	color: white;
@@ -94,19 +95,35 @@ body {
 
 
 #search {
+	font-family:trebuchet ms;
 	grid-area: srch;
-	background-color: black;
+	background-color: #2b2b2b;
 	color:white;
 	padding: 5px;
 }
 
+#search input {
+	width:150px;
+}
+
+#search button {
+	width:100px;
+
+}
+
 #sign-in {
 	grid-area: login;
-	background-color: #4286f4;
+	background-color: #277ca3;						  /* sign in COLOR*/
 	padding: 5px;
 }
 
+#sign-in label{
+	color:white;
+
+}
+
 #sign-in h2{
+	font-family:trebuchet ms;
 	color:white;
 	padding-left:10px;
 /*	margin-top:5px;
@@ -114,20 +131,20 @@ body {
 }
 
 #sign-in #name{
-	width:200px;
-	margin-left:20px;
+	width:150px;
+	margin-left:25px;
 	margin-bottom:5px;
 }
 
 #sign-in #email{
-	width:200px;
-	margin-left:20px;
+	width:150px;
+	margin-left:25px;
 	margin-bottom:5px;
 }
 
 #sign-in #password{
-	width:200px;
-	margin-left:0px;
+	width:150px;
+	margin-left:2px;
 	margin-bottom:5px;
 }
 
@@ -135,19 +152,25 @@ body {
 #submit {
  	width:100px;
  	/*float:right;*/
- 	margin-right:50px;
+ 	margin-right:150px;
+ 	float:right;
 }
 
 
 #recent-searches {
 	grid-area: rcntsrch;
-	background-color: #4286f4;
+	background-color: #277ca3;						  /*recent searches COLOR*/
 	padding: 5px;
 }
 
 #recent-searches h2{
+	font-family:trebuchet ms;
 	color:white;
 	padding-left:10px;
+}
+
+#recent-searches li{
+	color:white;
 }
 
 #map {
@@ -161,11 +184,13 @@ body {
 }
 
 #footer {
+	font-family:trebuchet ms;
 	grid-area: ftr;
 	text-align:center;
 	color:white;
-	background-color: #4286f4;
+	background-color: #2b2b2b;
 	padding: 5px;
+	padding-top:15px;
 }
 
 
@@ -188,7 +213,13 @@ body {
 		margin: auto;
 	}
 
+		#header-text {
+		margin-top:-35px;
+	}
 
+	#header-text {
+
+	}
 	.grid {
 		
 		/*grid-template-columns:1fr 1fr;*/
@@ -212,6 +243,10 @@ body {
 		margin: auto;
 	}
 
+	#header-text {
+		margin-top:-35px;
+	}
+
 	.grid {
 		
 		grid-template-rows: 100px 50px 200px 200px 50px;
@@ -230,9 +265,12 @@ body {
 
 	
 	#container {
-		width: 500px;
-		
+		width: 450px;
 		margin: auto;
+	}
+
+	#header-text {
+		margin-top:-50px;
 	}
 
 	.grid {
