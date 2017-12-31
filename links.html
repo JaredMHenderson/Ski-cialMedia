@@ -25,25 +25,10 @@
   </head>
   <body>
     <div id="container">
-
       <div class = "grid">
-
         <div id = "header">
-          <div class="fallingSnow">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-     
-          </div>
           <!-- <img src="assets/images/skiing.png" alt="mountains"> -->
-          <h1 id="header-text">Ski-cial Media</h1>
+          <h1 id="header-text">SKI-cial Media</h1>
         </div> <!-- header -->
 
         <div class="navbar">
@@ -67,23 +52,9 @@
             </div>
           </li>
 
-            <li id="links">
-            <a>Links</a>
-            <div class="dropdown">
-              <div>
-                <a href="#">Hotels.com</a>
-              </div>
-              <div>
-                <a href="#">airBnB.com</a>
-              </div>
-              <div>
-                <a href="#">Liftopedia</a>
-              </div>
-            </div>
+          <li>
+            <a id="links" href="./links.html">Links</a>
           </li>
-          <!-- <div>
-            <a id="links">Links</a>
-          </div> -->
                   <!-- </nav> -->
           <!-- </div> --> 
         </div>  
@@ -119,7 +90,7 @@
               <input id="password" name="password" required="required">
             </li>
           </ul>
-          <input id="submit" type="submit">
+          <input type="submit">
         </form>
           
 
@@ -133,35 +104,25 @@
             <li>Keystone</li>
           </ul>
         </div> <!-- recent-searches -->
-      <!-- sidebar -->
+      <!-- </div> sidebar -->
 
        <!-- XXXXXXXXXXXXXXXXXXXXXXXXXX MAIN CONTENT AREA XXXXXXXXXXXXXXXXXXXXXXXXXX -->
-        <!--  id="main-content-area" -->
+        <!-- <div id="main-content-area"> -->
         <div id="map"> 
-          MAP
+          <a href="https://www.hotels.com/"> Hotels.com </a> <br>
+          <a href="https://www.liftopia.com/"> Liftopia.com </a> <br>
         </div>  <!-- map -->
 
         <div id="list"> List
         </div> <!-- list -->
 
-        <footer id="footer"> &copy; 2017 Copyright Ski-cial Media
+        <footer id="footer"> &copy 2017 Copyright Ski-cial Media
         </footer>
 
       </div> <!-- end of grid-- >
           <!-- </div> main-content-area -->
     </div>
-    <script>
-       /* this function must be created before the API is loaded (otherwise callback is lost) */
-      function myMap() {
-        var mapProp = {
-            center: new google.maps.LatLng(39.800,-106.200),
-            zoom: 8,
-        };
-        var map = new google.maps.Map(document.getElementById("map"),mapProp);
-      }
-    </script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzxrQ1LvZFppwAKMvIF3Yom_r--aECrM&callback=myMap"></script>    
+ 
   </body>
 </html>
 
