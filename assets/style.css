@@ -143,6 +143,8 @@ body {
 	margin-bottom:5px;*/
 }
 
+
+
 #sign-in #name{
 	width:150px;
 	margin-left:25px;
@@ -188,6 +190,7 @@ body {
 	color:white;
 	padding-left:10px;
 }
+
 
 #recent-searches li{
 	color:white;
@@ -268,6 +271,10 @@ body {
 		margin-top:-35px;
 	}
 
+	#home {
+		margin-left:10px;
+	}
+
 	.grid {
 		
 		grid-template-rows: 100px 50px 250px 400px 50px;
@@ -293,6 +300,10 @@ body {
 
 	#header h1 {
 		margin-top:-55px;
+	}
+
+	#home {
+		margin-left:25px;
 	}
 
 	.grid {
