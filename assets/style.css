@@ -143,6 +143,8 @@ body {
 	margin-bottom:5px;*/
 }
 
+
+
 #sign-in #name{
 	width:150px;
 	margin-left:25px;
@@ -188,6 +190,7 @@ body {
 	color:white;
 	padding-left:10px;
 }
+
 
 #recent-searches li{
 	color:white;
@@ -240,16 +243,18 @@ body {
 	#header-text {
 
 	}
+
+
 	.grid {
 		
 		/*grid-template-columns:1fr 1fr;*/
-		grid-template-rows: 100px 50px 250px 250px 50px;
+		grid-template-rows: 100px 50px 250px 400px 50px;
 		grid-template-columns: 300px 300px 300px;
 		grid-template-areas:
 			"header  header  header"
 			"nav      nav    srch"
-			"map      list   login"   
-			"map     list   rcntsrch"
+			"map      map   login"   
+			"list     list   rcntsrch"
 			"ftr      ftr     ftr";
 			
 	}
@@ -266,6 +271,10 @@ body {
 
 	#header h1{
 		margin-top:-35px;
+	}
+
+	#home {
+		margin-left:10px;
 	}
 
 	.grid {
@@ -293,6 +302,10 @@ body {
 
 	#header h1 {
 		margin-top:-55px;
+	}
+
+	#home {
+		margin-left:25px;
 	}
 
 	.grid {
