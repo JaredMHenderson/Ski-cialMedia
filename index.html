@@ -115,7 +115,7 @@
             </div> <!-- dropdown -->
           </li>
 
-            <li id="links">
+         <li id="links">
             <a>Links</a>
             <div class="dropdown">
               <div>
@@ -152,7 +152,7 @@
         
         
         <form id="sign-in">
-          <h2>Sign up or Log in</h2>
+          <h2>Sign up for our newsletter</h2>
           <hr class="grey-hr">
           <ul>
             <li>
@@ -163,17 +163,17 @@
               <label for="email">Email</label>
               <input type="email" id="email" name="email" placeholder="example@gmail.com" required="required">
             </li>
-            <li>
+         <!--    <li>
               <label for="password">Password</label>
               <input id="password" name="password" required="required">
-            </li>
+            </li> -->
           </ul>
           <input id="submit" type="submit"> <br>
-          <h4>Log in to see your recently viewed resorts</h4>
+         
         </form>
           
 
-        <div id="recent-searches">
+        <!-- <div id="recent-searches">
           <h2>Recently viewed</h2>
           <hr>
           <ul>
@@ -182,7 +182,7 @@
             <li>Breckenridge</li>
             <li>Keystone</li>
           </ul>
-        </div> <!-- recent-searches -->
+        </div> --> <!-- recent-searches -->
       <!-- sidebar -->
 
        <!-- XXXXXXXXXXXXXXXXXXXXXXXXXX MAIN CONTENT AREA XXXXXXXXXXXXXXXXXXXXXXXXXX -->
@@ -269,7 +269,29 @@
       }
     </script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzxrQ1LvZFppwAKMvIF3Yom_r--aECrM&callback=myMap"></script>    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzxrQ1LvZFppwAKMvIF3Yom_r--aECrM&callback=myMap"></script>   
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyCGFZJ4_F1ujKk_g57Xc0npkyrComAgsMg",
+          authDomain: "ski-resort-app.firebaseapp.com",
+          databaseURL: "https://ski-resort-app.firebaseio.com",
+          projectId: "ski-resort-app",
+          storageBucket: "ski-resort-app.appspot.com",
+          messagingSenderId: "195192287950"
+        };
+        firebase.initializeApp(config);
+      </script> 
+
+      <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
+
+      
   </body>
 </html>
 
