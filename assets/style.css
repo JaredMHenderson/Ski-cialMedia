@@ -1,8 +1,360 @@
-.jumbotron {
-    height: 500px;
-    background: url("./images/chris-biron-99839.jpg") no-repeat center center/cover;
+
+body {
+	background-color: white;
+}
+
+#container {
+	width: 1150px;
+	margin: auto;
+}
+
+#logo {
+	width:20px;
+}
+
+.grid {
+	display:grid;
+
+	grid-template-rows: 100px 50px 250px 250px 50px;
+	grid-template-columns: 275px 275px 275px 300px;		
+	grid-template-areas:
+		'header header header header'
+		'nav    nav    nav    srch  '
+		'map    map    list   login '
+		'map    map    list   rcntsrch '
+		'ftr    ftr    ftr    ftr';
+
+	grid-gap:.5rem;
+}
+
+#header {
+	font-family: trebuchet ms;
+	color:white;
+	padding-top:35px;
+	text-align:center;
+	grid-area: header;
+	position: relative;
+	background-color: #277ca3;                      /*   HEADER COLOR*/
+
+}
+
+#header h1{
+	margin-top:-35px;
+	text-align:center;
+	color:white;
+}
+
+#header h4{
+	
+	text-align:center;
+	margin-top: -15px;
+	color:#2b2b2b;
+}
+
+.navbar {
+	grid-area: nav;
+	padding: 5px;
+	background-color: #2b2b2b;
+}
+.dropdown {
+	display: none;
+}
+.dropdown div {
+	padding: 5px;
+}
+.dropdown div:hover {
+	color: white;
+	background-color: #2b2b2b;				
+}
+.navbar li {
+	display: inline-block;
+	font-family:trebuchet ms;
+	margin-left: 5%;
+	margin-top: 7px;
+	color: white;
+	padding: 5px;
+}
+.navbar li a {
+	text-decoration: none;
+	text-align:center;
+	color:white;
+	color: inherit;
+}
+.navbar li:hover {
+	color: white;
+	background-color: #277ca3;
+}
+#resorts {
+	position: relative;
+}
+#resorts:hover div {
+	display: block;
+}
+
+#links {
+	position: relative;
+}
+#links:hover div {
+	display: block;
+}
+
+.dropdown {
+	position: absolute;
+	left: 0px;
+	top: calc(1em + 10px);
+	background-color: #277ca3;
+	z-index: 999;
+}
+
+
+#search {
+	font-family:trebuchet ms;
+	grid-area: srch;
+	background-color: #2b2b2b;
+	color:white;
+	padding: 5px;
+}
+
+#search input {
+	width:150px;
+}
+
+#search button {
+	width:100px;
+
+}
+
+#sign-in {
+	grid-area: login;
+	background-color: #277ca3;						  /* sign in COLOR*/
+	padding: 5px;
+}
+
+#sign-in label{
+	color:white;
+
+}
+
+#sign-in h2{
+	font-family:trebuchet ms;
+	color:white;
+	padding-left:10px;
+/*	margin-top:5px;
+	margin-bottom:5px;*/
+}
+
+#sign-in #name{
+	width:150px;
+	margin-left:25px;
+	margin-bottom:5px;
+}
+
+#sign-in #email{
+	width:150px;
+	margin-left:25px;
+	margin-bottom:5px;
+}
+
+#sign-in #password{
+	width:150px;
+	margin-left:2px;
+	margin-bottom:5px;
+}
+
+#sign-in h4 {
+	font-family:trebuchet ms;
+	font-size:14px;
+	padding-left:5px;
+	color:#2b2b2b;
+}
+
+
+#submit {
+ 	width:100px;
+ 	/*float:right;*/
+ 	margin-right:150px;
+ 	float:right;
+}
+
+
+#recent-searches {
+	grid-area: rcntsrch;
+	background-color: #277ca3;						  /*recent searches COLOR*/
+	padding: 5px;
+}
+
+#recent-searches h2{
+	font-family:trebuchet ms;
+	color:white;
+	padding-left:10px;
+}
+
+#recent-searches li{
+	color:white;
 }
 
 #map {
-    height: 100%;
+	grid-area: map;
+	background-color: #dddddd;
+}
+
+#list {
+	grid-area: list;
+	background-color: #dddddd;
+}
+
+#footer {
+	font-family:trebuchet ms;
+	grid-area: ftr;
+	text-align:center;
+	color:white;
+	background-color: #2b2b2b;
+	padding: 5px;
+	padding-top:15px;
+}
+
+
+#header img {
+	z-index: -1;
+	width:100%;
+	opacity: .8;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+}
+
+
+
+@media(max-width: 1150px) {
+	/* max-width 1150 means it ONLY does this until it gets larger than 1150, then it doesn't */
+
+	#container {
+		width: 900px;
+		margin: auto;
+	}
+
+		#header h1{
+		margin-top:-35px;
+	}
+
+	#header-text {
+
+	}
+	.grid {
+		
+		/*grid-template-columns:1fr 1fr;*/
+		grid-template-rows: 100px 50px 250px 250px 50px;
+		grid-template-columns: 300px 300px 300px;
+		grid-template-areas:
+			"header  header  header"
+			"nav      nav    srch"
+			"map      list   login"   
+			"map     list   rcntsrch"
+			"ftr      ftr     ftr";
+			
+	}
+
+}
+
+@media(max-width: 900px) {
+	/* max-width 1150 means it ONLY does this until it gets larger than 1150, then it doesn't */
+
+	#container {
+		width: 700px;
+		margin: auto;
+	}
+
+	#header h1{
+		margin-top:-35px;
+	}
+
+	.grid {
+		
+		grid-template-rows: 100px 50px 250px 400px 50px;
+		grid-template-columns: 400px 300px;
+		grid-template-areas:
+			"header    header"
+			"nav       srch   "
+			"map       login   "   
+			"list      rcntsrch  "
+			"ftr       ftr";
+	}
+}
+
+
+
+@media(max-width: 600px) {
+
+	
+	#container {
+		width: 450px;
+		margin: auto;
+	}
+
+	#header h1 {
+		margin-top:-55px;
+	}
+
+	.grid {
+		
+		/*grid-template-columns: 1fr 1fr 1fr 1fr;*/
+		grid-template-rows: 100px 50px 250px 50px 450px 250px 250px 50px;
+		grid-template-columns: 450px;
+		grid-template-areas:
+			"header"
+			"nav"
+			"map"   
+			"srch"
+			"list"
+			"login"
+			"rcntsrch"
+			"ftr";
+			
+	}
+}
+
+.fallingSnow span {	
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+    margin: -300px 60px 54px -34px;
+ 
+    background:url("images/snowflake.png");
+ 
+    -webkit-animation: fallingSnow 12s  linear;
+    -moz-animation: fallingSnow 12s  linear;
+}
+
+.fallingSnow span:nth-child(5n+5) {
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+}
+
+.fallingSnow span:nth-child(3n+2) {
+    -webkit-animation-delay: 1.5s;
+    -moz-animation-delay: 1.5s;
+}
+
+.fallingSnow span:nth-child(2n+5) {
+    -webkit-animation-delay: 1.7s;
+    -moz-animation-delay: 1.7s;
+}
+
+@-webkit-keyframes fallingSnow {
+  0% {
+    opacity: 1;
+
+	-webkit-transform: translate(0, 0px) rotateZ(0deg);
+  }
+  75% {
+    opacity: 1;
+
+	-webkit-transform: translate(100px, 600px) rotateZ(270deg); 
+  }
+  100% {
+    opacity: 0;
+
+	-webkit-transform: translate(150px, 800px) rotateZ(360deg);
+  }
 }

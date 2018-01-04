@@ -1,137 +1,244 @@
-<!DOCTYPE>
-<html>
-    <head>
-        
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="UTF-8">
-        <!-- Latest compiled and minified CSS & JS -->
-        <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="//code.jquery.com/jquery.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="./assets/style.css">
-
-        <!--Link to animate.css -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
-        <!-- or -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-
-        <!--Link to firebase -->
-        <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-        
-        <title>Ski-cial Media</title>
-
-        
-    </head>
-    <body>
-        <div class="site-wrapper"></div>
-        
-    <div class="container-fluid">
-       <div class="jumbotron">
-           
-           <div class="container">
-               
-           
-           
-           <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-               <h1 class="animated fadeInUp">Ski-cial Media</h1>
-               
-               <button type="button" class="btn btn-default animated fadeInUp">Learn More</button>  
-           </div>
-
-           
-           <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-               
-               <input type="text" name="searchBox" id="input${1/(\w+)/\u\1/g}" class="form-control animated fadeInUp" value="" required="required" pattern="" title="">
-               
-               <button type="button" type="submit" class="btn btn-default animated fadeInUp" id="searchButton">Search</button>
-               
-           </div>
-        </div>
-           
-           
-       </div>
-       
-       <div class="row animated fadeInUp">
-           
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-               <div class="panel panel-default">
-                   <div class="panel-body">
-                      <h2>Current Location</h2>
-                      <div id="location">
-
-                      </div>
-                   </div>
-               </div>
-            </div>
-
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        Map
-                    </div>
-                    
-                    <div id="mapDiv">
-                        <iframe class="hidden" id="coloradoMap" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1582011.2355678447!2d-105.87650225767516!3d39.245920359019465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1scolorado+ski+resorts!5e0!3m2!1sen!2sus!4v1514478559265"
-                            width="100%" height="325" frameborder="0" style="border:0" allowfullscreen></iframe>
-
-                        <iframe class="hidden" id="utahMap" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1545845.3140798567!2d-111.62354521752188!3d40.82293059135207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sutah+ski+resorts!5e0!3m2!1sen!2sus!4v1514478697444"
-                            width="100%" height="325" frameborder="0" style="border:0" allowfullscreen></iframe>
-
-                        <iframe class="hidden" id="californiaMap" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3194557.970193064!2d-120.34538888074741!3d38.56405884580367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1scalifornia+ski+resorts!5e0!3m2!1sen!2sus!4v1514478293456"
-                                width="100%" height="325" frameborder="0" style="border:0" allowfullscreen></iframe>
-
-                        <iframe 
-                                width="100%" 
-                                height="325" 
-                                frameborder="0" 
-                                style="border:0" 
-                                
-                                src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=Copper+Mountain,Keystone+Resort+Jones+Gulch,Loveland+Ski Area, Colorado&zoom=9"
-                                    allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        Popular Resort States
-                    </div>
-                    
-                    <button id="coloradoButton" type="button" class="btn btn-default">Colorado</button>
-                    <button id="utahButton" type="button" class="btn btn-default">Utah</button>
-                    <button id="californiaButton" type="button" class="btn btn-default">California</button>
-                    
-                </div>
-            </div>
-
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        Basic panel example
-                    </div>
-                </div>
-            </div>
-           
-       </div>
-       
-       
-       <div class="row">
-           
-           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="map">
-               
-           </div>
-           
-       </div>
-       
-
-    </div>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+      
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
     
-    <script src="./assets/logic.js"></script>
-    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGFZJ4_F1ujKk_g57Xc0npkyrComAgsMg&callback=initMap"> -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGFZJ4_F1ujKk_g57Xc0npkyrComAgsMg&libraries=places&callback=initMap" async defer></script>
+    <!-- jquery & our scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="assets/logic.js"></script> -->
+    
+    <link rel="icon" href="assets/images/favicon (1).ico">
+
+    <!--Link to firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+
+    <!--Link to animate.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="assets/style.css">
+
+    <!--Link to animate.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <!-- or -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+
+    <title>Ski-cial Media</title>
+
+  </head>
+  <body>
+    <div id="container">
+
+      <div class = "grid">
+
+        <div id = "header">
+          <div class="fallingSnow">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+     
+          </div>
+          <!-- <img src="assets/images/skiing.png" alt="mountains"> -->
+          <!-- <img id="logo" src="assets/images/favicon (1).ico"> -->
+
+          <h1> Ski-cial Media<!-- Ski-cial Media --></h1>
+
+          <h4> Let us help you choose your mountain </h4>
+        </div> <!-- header -->
+
+        <div class="navbar">
+                <!-- <nav> -->
+          <li>
+            <a id="home" href="index.html">Home</a>
+          </li>
+
+          <li id="resorts">
+            <a>Resorts by State</a>
+            <div class="dropdown">
+              <div>
+                <a href="#">Colorado</a>
+              </div>
+              <div>
+                <a href="#">Utah</a>
+              </div>
+              <div>
+                <a href="#">California</a>
+              </div>
+            </div>
+          </li>
+
+            <li id="links">
+            <a>Links</a>
+            <div class="dropdown">
+              <div>
+                <a href="https://www.hotels.com/" target="_blank">Hotels.com</a>
+              </div>
+              <div>
+                <a href="https://www.airbnb.com/" target="_blank">airBnB.com</a>
+              </div>
+              <div>
+                <a href="https://www.liftopia.com/" target="_blank">Liftopedia</a>
+              </div>
+            </div>
+          </li>
+          <!-- <div>
+            <a id="links">Links</a>
+          </div> -->
+                  <!-- </nav> -->
+          <!-- </div> --> 
+        </div>  
+
+
+        <!-- <div class="sidebar"> -->
+        <div id="map-image"> <!-- aka empty green box in the top right -->
+        </div> <!-- map-image -->
+
+      
+        <div id="search">
+          <div> Search a State, Town or Resort </div>
+          <input type="text"> 
+          
+          <button>Submit</button>
+
+        </div> <!-- search -->
+        
+        
+        <form id="sign-in">
+          <h2>Sign up or Log in</h2>
+          <hr>
+          <ul>
+            <li>
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="John Smith" required="required">
+            </li>
+            <li>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="example@gmail.com" required="required">
+            </li>
+            <li>
+              <label for="password">Password</label>
+              <input id="password" name="password" required="required">
+            </li>
+          </ul>
+          <input id="submit" type="submit"> <br>
+          <h4>Log in to see your recently viewed resorts</h4>
+        </form>
+          
+
+        <div id="recent-searches">
+          <h2>Recently viewed</h2>
+          <hr>
+          <ul>
+            <li>Vail</li>
+            <li>Winter Park</li>
+            <li>Breckenridge</li>
+            <li>Keystone</li>
+          </ul>
+        </div> <!-- recent-searches -->
+      <!-- sidebar -->
+
+       <!-- XXXXXXXXXXXXXXXXXXXXXXXXXX MAIN CONTENT AREA XXXXXXXXXXXXXXXXXXXXXXXXXX -->
+        <!--  id="main-content-area" -->
+        <div id="map"> 
+          MAP
+        <iframe class="hidden" id="coloradoMap" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1582011.2355678447!2d-105.87650225767516!3d39.245920359019465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1scolorado+ski+resorts!5e0!3m2!1sen!2sus!4v1514478559265"
+            width="100%" height="325" frameborder="0" style="border:0" allowfullscreen></iframe>
+        
+        <iframe class="hidden" id="utahMap" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1545845.3140798567!2d-111.62354521752188!3d40.82293059135207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sutah+ski+resorts!5e0!3m2!1sen!2sus!4v1514478697444"
+            width="100%" height="325" frameborder="0" style="border:0" allowfullscreen></iframe>
+        
+        <iframe class="hidden" id="californiaMap" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3194557.970193064!2d-120.34538888074741!3d38.56405884580367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1scalifornia+ski+resorts!5e0!3m2!1sen!2sus!4v1514478293456"
+            width="100%" height="325" frameborder="0" style="border:0" allowfullscreen></iframe>
+        
+        <iframe width="100%" height="325" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=Copper+Mountain,Keystone+Resort+Jones+Gulch,Loveland+Ski Area, Colorado&zoom=9"
+            allowfullscreen>
+        </iframe>
+        </div>  <!-- map -->
+
+        <div id="list"> 
+          <h2 style="padding-left:20px;"> Winter Park Resort </h2> <hr>
+          <table style="width: 150px; height: 252px; padding-left: 20px;">
+              <tbody>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">Temperature</td>
+              <td style="height: 23px; width: 184px;">XX</td>
+              </tr>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">Wind</td>
+              <td style="height: 23px; width: 184px;">XX</td>
+              </tr>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">Snow&nbsp;</td>
+              <td style="height: 23px; width: 184px;">XX</td>
+              </tr>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">Recent snowfall</td>
+              <td style="height: 23px; width: 184px;">XX</td>
+              </tr>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">Open trails</td>
+              <td style="height: 23px; width: 184px;">XX</td>
+              </tr>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">Open lifts</td>
+              <td style="height: 23px; width: 184px;">XX</td>
+              </tr>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">Base depth</td>
+              <td style="height: 23px; width: 184px;">XX</td>
+              </tr>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">Summit depth</td>
+              <td style="height: 23px; width: 184px;">XX</td>
+              </tr>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">Last snowfall</td>
+              <td style="height: 23px; width: 184px;">XX</td>
+              </tr>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">&nbsp;</td>
+              <td style="height: 23px; width: 184px;">&nbsp;</td>
+              </tr>
+              </tbody>
+              </table>
+              <p>&nbsp;</p>
+        </div> <!-- list -->
+
+        <footer id="footer"> &copy; 2017 Copyright Ski-cial Media
+        </footer>
+
+      </div> <!-- end of grid-- >
+          <!-- </div> main-content-area -->
+    </div>
+    <script>
+       /* this function must be created before the API is loaded (otherwise callback is lost) */
+      function myMap() {
+        var mapProp = {
+            center: new google.maps.LatLng(39.800,-106.200),
+            zoom: 8,
+        };
+        var map = new google.maps.Map(document.getElementById("map"),mapProp);
+      }
     </script>
-    </script>  
-    </body>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzxrQ1LvZFppwAKMvIF3Yom_r--aECrM&callback=myMap"></script>    
+  </body>
 </html>
+
+
+
+
+
+
+
