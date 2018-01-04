@@ -2,8 +2,12 @@
 // Research how to share a firebase database
 
 
-// array of resorts that show up when Colorado Button is clicked
-let coloradoResorts = ["Keystone", "Copper Mountain", "Loveland", "Monarch", "Arapahoe Basin"]
+// array of resorts that show up when each state Button is clicked
+let coloradoResorts = ["Keystone", "Copper Mountain", "Loveland", "Monarch", "Arapahoe Basin"];
+let utahResorts = ["Beaver Mountain", "Brighton Ski Resort", "Dear Valley", "Sundance Resort", "Solitude Mountain" ];
+let centralCaResorts = ["Mammoth Mountain", "Badger Pass", "Dodge Ridge", "China Peak"];
+let northernCaResorts = ["Bear Valley", "Boreal Mountain Resort", "Dodge Ridge", "Donner Ski Ranch", "Heavenly Mountain"];
+
 
 
 
@@ -13,11 +17,13 @@ $(function(){
 
 $('#colorado-button').on("click",function(){
     // alert("colorado was clicked");
-    // $('#map').addClass('fadeIn');
     $("#list").empty();
+    $("#list").append(`<h1 class="animated fadeIn">Colorado Resorts</h1>`);
+    $("")
+
     for (var i = 0; i < coloradoResorts.length; i++) {
 
-        $("#list").append(`<button data-index='${i}'>${coloradoResorts[i]}</button>`);
+        $("#list").append(`<div><button class="animated fadeInUp" data-index='${i}'>${coloradoResorts[i]}</button><div>`);
     };
 
     $('#map').html(`<iframe 
@@ -33,7 +39,12 @@ $('#colorado-button').on("click",function(){
 
 $('#utah-button').on("click", function(){
     // alert('utah was clicked');
-    
+    $("#list").empty();
+    $("#list").append(`<h1 class="animated fadeIn">Utah Resorts</h1>`);
+    for (var i = 0; i < utahResorts.length; i++) {
+
+        $("#list").append(`<div><button class="animated fadeInUp" data-index='${i}'>${utahResorts[i]}</button></div>`);
+    };
 
     $('#map').html(`<iframe 
         width="100%" 
@@ -47,8 +58,15 @@ $('#utah-button').on("click", function(){
 //on click function for central CA button
 
 $('#central-california-button').on("click", function () {
-        // alert('CA was clicked');
-        $('#map').html(`<iframe 
+    // alert('CA was clicked');
+    $("#list").empty();
+    $("#list").append(`<h1 class="animated fadeIn">Central Califorian Resorts</h1>`);
+    for (var i = 0; i < centralCaResorts.length; i++) {
+
+        $("#list").append(`<div><button class="animated fadeInUp" id='${centralCaResorts[i]}'>${centralCaResorts[i]}</button></div>`);
+    };
+
+    $('#map').html(`<iframe 
         width="100%" 
         height="100%" 
         frameborder="0" 
@@ -61,7 +79,14 @@ $('#central-california-button').on("click", function () {
     //on click function for northern CA button
 $('#northern-california-button').on("click", function () {
         // alert('CA was clicked');
-        $('#map').html(`<iframe 
+    $("#list").empty();
+    $("#list").append(`<h1>Northern California Resorts</h1>`);
+    for (var i = 0; i < northernCaResorts.length; i++) {
+
+        $("#list").append(`<div><button class="animated fadeInUp" data-index='${i}'>${northernCaResorts[i]}</button></div>`);
+    };
+
+    $('#map').html(`<iframe 
         width="100%" 
         height="100%" 
         frameborder="0" 
