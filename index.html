@@ -7,9 +7,15 @@
     
     <!-- jquery & our scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- <script src="assets/logic.js"></script> -->
+    <script src="assets/logic.js">
     
     <link rel="icon" href="assets/images/favicon (1).ico">
+
+    <!--Link to firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+
+    <!--Link to animate.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 
 
     <!-- Stylesheet -->
@@ -61,21 +67,21 @@
             <a>Choose a region or state</a>
             <div class="dropdown">
               <div>
-                <a href="#">Colorado</a>
+                <a href="#" id="colorado-button">Colorado</a>
               </div>
               <div>
-                <a href="#">Utah</a>
+                <a href="#" id="utah-button">Utah</a>
               </div>
               <div>
-                <a href="#">NY, NJ and PA</a>
+                <a href="#" id="central-california-button" >California: Central &amp; Southern</a>
               </div>
               <div>
-                <a href="#">California: Central &amp; Southern</a>
+                <a href="#" id="northern-california-button" >California: Lake Tahoe &amp; Northern</a>
               </div>
-              <div>
-                <a href="#">California: Lake Tahoe &amp; Northern</a>
-              </div>
-              <div>
+              <!-- <div>
+                <div>
+                    <a href="#">NY, NJ and PA</a>
+                </div>
                 <a href="#">Northern Rockies</a>
               </div>
               <div>
@@ -104,7 +110,7 @@
               </div>
               <div>
                 <a href="#">New England</a>
-              </div>
+              </div> -->
               
             </div> <!-- dropdown -->
           </li>
@@ -183,6 +189,18 @@
         <!--  id="main-content-area" -->
         <div id="map"> 
           MAP
+        <iframe class="hidden" id="coloradoMap" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1582011.2355678447!2d-105.87650225767516!3d39.245920359019465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1scolorado+ski+resorts!5e0!3m2!1sen!2sus!4v1514478559265"
+            width="100%" height="325" frameborder="0" style="border:0" allowfullscreen></iframe>
+        
+        <iframe class="hidden" id="utahMap" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1545845.3140798567!2d-111.62354521752188!3d40.82293059135207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sutah+ski+resorts!5e0!3m2!1sen!2sus!4v1514478697444"
+            width="100%" height="325" frameborder="0" style="border:0" allowfullscreen></iframe>
+        
+        <iframe class="hidden" id="californiaMap" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3194557.970193064!2d-120.34538888074741!3d38.56405884580367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1scalifornia+ski+resorts!5e0!3m2!1sen!2sus!4v1514478293456"
+            width="100%" height="325" frameborder="0" style="border:0" allowfullscreen></iframe>
+        
+        <iframe width="100%" height="325" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=Copper+Mountain,Keystone+Resort+Jones+Gulch,Loveland+Ski Area, Colorado&zoom=9"
+            allowfullscreen>
+        </iframe>
         </div>  <!-- map -->
 
         <div id="list"> 
