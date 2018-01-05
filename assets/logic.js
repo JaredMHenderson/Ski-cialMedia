@@ -13,16 +13,14 @@ $(function(){
 //on click function for colorado button
 
 $('#colorado-button').on("click",function(){
-    // alert("colorado was clicked");
-    $("#list").empty();
-    $("#list").append(`<h1 class="animated fadeIn">Colorado Resorts</h1>`);
-    $('#list').css('background-image', 'url("./assets/images/jorg-angeli-406235.jpg")');
-
+    $("#list").empty().addClass('coloradoBgImage').append(`<h1 class="animated fadeIn">Colorado Resorts</h1>`);
+    
+// creates a button for each resort in the array and gives it a unique id with the name of the resort
     for (var i = 0; i < coloradoResorts.length; i++) {
-
-        $("#list").append(`<div><button class="animated fadeInUp" id='${coloradoResorts[i]}'>${coloradoResorts[i]}</button><div>`);
+        $("#list").append(`<div><button class="animated fadeInUp resort-buttons" id='${coloradoResorts[i]}'>${coloradoResorts[i]}</button><div>`);
     };
     
+// adds the map of resorts
 
     $('#map').html(`<iframe 
         width="100%" 
@@ -31,17 +29,17 @@ $('#colorado-button').on("click",function(){
         style="border:0" 
         src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=Ski+Resort+Colorado&zoom=7" allowfullscreen>
         </iframe>`);
+    
 });
 
 //on click function for utah button
 
 $('#utah-button').on("click", function(){
-    // alert('utah was clicked');
-    $("#list").empty();
-    $("#list").append(`<h1 class="animated fadeIn">Utah Resorts</h1>`);
+    $("#list").empty().addClass('utahBgImage').append(`<h1 class="animated fadeIn">Utah Resorts</h1>`);
+   
     for (var i = 0; i < utahResorts.length; i++) {
 
-        $("#list").append(`<div><button class="animated fadeInUp" data-index='${i}'>${utahResorts[i]}</button></div>`);
+        $("#list").append(`<div><button class="animated fadeInUp resort-buttons" data-index='${i}'>${utahResorts[i]}</button></div>`);
     };
 
     $('#map').html(`<iframe 
@@ -56,12 +54,11 @@ $('#utah-button').on("click", function(){
 //on click function for central CA button
 
 $('#central-california-button').on("click", function () {
-    // alert('CA was clicked');
-    $("#list").empty();
-    $("#list").append(`<h1 class="animated fadeIn">Central Califorian Resorts</h1>`);
+    $("#list").empty().addClass('centralCaBgImage').append(`<h1 class="animated fadeIn">Central California Resorts</h1>`);
+    
     for (var i = 0; i < centralCaResorts.length; i++) {
 
-        $("#list").append(`<div><button class="animated fadeInUp" id='${centralCaResorts[i]}'>${centralCaResorts[i]}</button></div>`);
+        $("#list").append(`<div><button class="animated fadeInUp resort-buttons" id='${centralCaResorts[i]}'>${centralCaResorts[i]}</button></div>`);
     };
 
     $('#map').html(`<iframe 
@@ -76,12 +73,11 @@ $('#central-california-button').on("click", function () {
 
     //on click function for northern CA button
 $('#northern-california-button').on("click", function () {
-        // alert('CA was clicked');
     $("#list").empty();
-    $("#list").append(`<h1>Northern California Resorts</h1>`);
+    $("#list").append(`<h1 class="animated fadeIn">Northern California Resorts</h1>`);
     for (var i = 0; i < northernCaResorts.length; i++) {
 
-        $("#list").append(`<div><button class="animated fadeInUp" data-index='${i}'>${northernCaResorts[i]}</button></div>`);
+        $("#list").append(`<div><button class="animated fadeInUp resort-buttons" data-index='${i}'>${northernCaResorts[i]}</button></div>`);
     };
 
     $('#map').html(`<iframe 
@@ -93,10 +89,6 @@ $('#northern-california-button').on("click", function () {
         </iframe>`);
     });
 
+
 });
-
-
-
-
-
 
