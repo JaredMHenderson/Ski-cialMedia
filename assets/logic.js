@@ -89,6 +89,19 @@ $('#northern-california-button').on("click", function () {
         </iframe>`);
     });
 
+    $(document).on('click', '.resort-buttons', function(){
+        $("#list").empty().addClass('coloradoBgImage').append(`<h1 class="animated fadeIn">Keystone Info</h1>`); 
+    
+
+    $('#map').html(`<iframe 
+        width="100%" 
+        height="100%" 
+        frameborder="0" 
+        style="border:0" 
+        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=Keystone+Colorado&zoom=7" allowfullscreen>
+        </iframe>`);
+    
+    });
 
 });
 
