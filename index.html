@@ -7,9 +7,15 @@
     
     <!-- jquery & our scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- <script src="assets/logic.js"></script> -->
+    <script src="assets/logic.js">
     
     <link rel="icon" href="assets/images/favicon (1).ico">
+
+    <!--Link to firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+
+    <!--Link to animate.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 
 
     <!-- Stylesheet -->
@@ -19,6 +25,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <!-- or -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    
 
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js"></script>
@@ -67,21 +74,21 @@
             <a>Choose a region or state</a>
             <div class="dropdown">
               <div>
-                <a href="#">Colorado</a>
+                <a href="#" id="colorado-button">Colorado</a>
               </div>
               <div>
-                <a href="#">Utah</a>
+                <a href="#" id="utah-button">Utah</a>
               </div>
               <div>
-                <a href="#">NY, NJ and PA</a>
+                <a href="#" id="central-california-button" >California: Central &amp; Southern</a>
               </div>
               <div>
-                <a href="#">California: Central &amp; Southern</a>
+                <a href="#" id="northern-california-button" >California: Lake Tahoe &amp; Northern</a>
               </div>
-              <div>
-                <a href="#">California: Lake Tahoe &amp; Northern</a>
-              </div>
-              <div>
+              <!-- <div>
+                <div>
+                    <a href="#">NY, NJ and PA</a>
+                </div>
                 <a href="#">Northern Rockies</a>
               </div>
               <div>
@@ -110,7 +117,7 @@
               </div>
               <div>
                 <a href="#">New England</a>
-              </div>
+              </div> -->
               
             </div> <!-- dropdown -->
           </li>
@@ -188,7 +195,7 @@
 
        <!-- XXXXXXXXXXXXXXXXXXXXXXXXXX MAIN CONTENT AREA XXXXXXXXXXXXXXXXXXXXXXXXXX -->
         <!--  id="main-content-area" -->
-        <div id="map"> 
+        <div id="map" class="animated fadeIn"> 
           MAP
         </div>  <!-- map -->
 
