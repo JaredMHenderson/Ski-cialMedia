@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+      
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    
+    <!-- jquery & our scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="assets/logic.js"></script> -->
+
+
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="assets/style.css">
+
+    <!--Link to animate.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <!-- or -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+
+    <title>Ski-cial Media</title>
+
+  </head>
+  <body>
+    <div id="container">
+      <div class = "grid">
+        <div id = "header">
+          <!-- <img src="assets/images/skiing.png" alt="mountains"> -->
+          <h1 id="header-text">SKI-cial Media</h1>
+        </div> <!-- header -->
+
+        <div class="navbar">
+                <!-- <nav> -->
+          <li>
+            <a id="home" href="index.html">Home</a>
+          </li>
+
+          <li id="resorts">
+            <a>Resorts by State</a>
+            <div class="dropdown">
+              <div>
+                <a href="#">Colorado</a>
+              </div>
+              <div>
+                <a href="#">Utah</a>
+              </div>
+              <div>
+                <a href="#">California</a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <a id="links" href="./links.html">Links</a>
+          </li>
+                  <!-- </nav> -->
+          <!-- </div> --> 
+        </div>  
+
+
+        <!-- <div class="sidebar"> -->
+        <div id="map-image"> <!-- aka empty green box in the top right -->
+        </div> <!-- map-image -->
+
+      
+        <div id="search">
+          <div> Search a State, Town or Resort </div>
+          <input type="text"> 
+          
+          <button>Submit</button>
+        </div> <!-- search -->
+        
+        
+        <form id="sign-in">
+          <h2>Sign up or Log in</h2>
+          <hr>
+          <ul>
+            <li>
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="John Smith" required="required">
+            </li>
+            <li>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="example@gmail.com" required="required">
+            </li>
+            <li>
+              <label for="password">Password</label>
+              <input id="password" name="password" required="required">
+            </li>
+          </ul>
+          <input type="submit">
+        </form>
+          
+
+        <div id="recent-searches">
+          <h2>Recent searches</h2>
+          <hr>
+          <ul>
+            <li>Vail</li>
+            <li>Winter Park</li>
+            <li>Breckenridge</li>
+            <li>Keystone</li>
+          </ul>
+        </div> <!-- recent-searches -->
+      <!-- </div> sidebar -->
+
+       <!-- XXXXXXXXXXXXXXXXXXXXXXXXXX MAIN CONTENT AREA XXXXXXXXXXXXXXXXXXXXXXXXXX -->
+        <!-- <div id="main-content-area"> -->
+        <div id="map"> 
+          <a href="https://www.hotels.com/"> Hotels.com </a> <br>
+          <a href="https://www.liftopia.com/"> Liftopia.com </a> <br>
+        </div>  <!-- map -->
+
+        <div id="list"> List
+        </div> <!-- list -->
+
+        <footer id="footer"> &copy 2017 Copyright Ski-cial Media
+        </footer>
+
+      </div> <!-- end of grid-- >
+          <!-- </div> main-content-area -->
+    </div>
+ 
+  </body>
+</html>
+
+
+
+
+
+
+
