@@ -13,16 +13,26 @@ $(function(){
 //on click function for colorado button
 
 $('#colorado-button').on("click",function(){
-    $("#list").empty().addClass('coloradoBgImage').append(`<h1 class="animated fadeIn">Colorado Resorts</h1>`);
+    $("#list").empty().removeClass('centralCaBgImage utahBgImage' ).addClass('coloradoBgImage').append(`<h1 class="animated fadeIn">Colorado Resorts</h1>`);
     
 // creates a button for each resort in the array and gives it a unique id with the name of the resort
     for (var i = 0; i < coloradoResorts.length; i++) {
-        $("#list").append(`<div><button class="animated fadeInUp resort-buttons" id='${coloradoResorts[i]}'>${coloradoResorts[i]}</button><div>`);
+        $("#list").append(`<div><button class="animated fadeInUp resort-buttons" data-state="Colorado" data-name='${coloradoResorts[i]}' id='${coloradoResorts[i]}'>${coloradoResorts[i]}</button><div>`);
     };
     
 // adds the map of resorts
 
-    $('#map').html(`<iframe 
+    // $('#map').removeClass('animated fadeIn').addClass('animated fadeIn').html(`<iframe 
+    //     width="100%" 
+    //     height="100%" 
+    //     frameborder="0" 
+    //     style="border:0" 
+    //     src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=Ski+Resort+Colorado&zoom=7" allowfullscreen>
+    //     </iframe>`);
+    setTimeout(() => {
+        $('iframe').addClass('animated fadeIn');
+    }, 1000);
+    $('#map').html(`<iframe
         width="100%" 
         height="100%" 
         frameborder="0" 
@@ -35,11 +45,11 @@ $('#colorado-button').on("click",function(){
 //on click function for utah button
 
 $('#utah-button').on("click", function(){
-    $("#list").empty().addClass('utahBgImage').append(`<h1 class="animated fadeIn">Utah Resorts</h1>`);
+    $("#list").empty().removeClass('coloradoBgImage centralCaBgImage', ).addClass('utahBgImage').append(`<h1 class="animated fadeIn">Utah Resorts</h1>`);
    
     for (var i = 0; i < utahResorts.length; i++) {
 
-        $("#list").append(`<div><button class="animated fadeInUp resort-buttons" data-index='${i}'>${utahResorts[i]}</button></div>`);
+        $("#list").append(`<div><button class="animated fadeInUp resort-buttons" data-state="Utah" data-name='${utahResorts[i]}'>${utahResorts[i]}</button></div>`);
     };
 
     $('#map').html(`<iframe 
@@ -58,7 +68,7 @@ $('#central-california-button').on("click", function () {
     
     for (var i = 0; i < centralCaResorts.length; i++) {
 
-        $("#list").append(`<div><button class="animated fadeInUp resort-buttons" id='${centralCaResorts[i]}'>${centralCaResorts[i]}</button></div>`);
+        $("#list").append(`<div><button class="animated fadeInUp resort-buttons" data-state="California" data-name='${centralCaResorts[i]} id='${centralCaResorts[i]}'>${centralCaResorts[i]}</button></div>`);
     };
 
     $('#map').html(`<iframe 
@@ -91,14 +101,14 @@ $('#northern-california-button').on("click", function () {
 
     $(document).on('click', '.resort-buttons', function(){
         $("#list").empty().addClass('coloradoBgImage').append(`<h1 class="animated fadeIn">Keystone Info</h1>`); 
-    
-
+        let place = $(this).attr('data-name');
+        let state = $(this).attr('data-state');
     $('#map').html(`<iframe 
         width="100%" 
         height="100%" 
         frameborder="0" 
         style="border:0" 
-        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=Keystone+Colorado&zoom=7" allowfullscreen>
+        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=${place}+${state}&zoom=7" allowfullscreen>
         </iframe>`);
     
     });
