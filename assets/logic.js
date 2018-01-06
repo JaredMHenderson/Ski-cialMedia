@@ -164,28 +164,79 @@ $('#northern-california-button').on("click", northernCaButtonClick)
         else if ($(this).attr('data-place') === 'Northern California') {
             northernCaButtonClick()
         }
+
     });
+
     $(document).on('click', '.resort-buttons', function(){ 
 
         //place and state are unique for each button
         let place = $(this).attr('data-name');
         let state = $(this).attr('data-state');
 
-        
         $("#list").empty().append(`<input type='button' class='back-button' data-place='${state}' value=Back /><h1 class='animated fadeIn'>${place} Info</h1>`);
         
-    $('#map').html(`<iframe 
-        width="100%" 
-        height="100%" 
-        frameborder="0" 
-        style="border:0" 
-        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=${place}+${state}&zoom=7" allowfullscreen>
-        </iframe>`);
+        $('#map').html(`<iframe 
+            width="100%" 
+            height="100%" 
+            frameborder="0" 
+            style="border:0" 
+            src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=${place}+${state}&zoom=7" allowfullscreen>
+            </iframe>`);
+                    
+        let weatherAPI = () => {
+
+            let apiKeyGeo = "AIzaSyC_AXkLRiDbkJwyfbAFjyV_F5FeavMdqOs";
+
+            let queryURLGeo = "https://maps.googleapis.com/maps/api/geocode/json?address="+ place + state + "&key=" + apiKeyGeo;
+
+                $.ajax({
+
+                    url: queryURLGeo,
+
+                    type: "GET"
+
+                }).done(response => {
+
+                        let lattitude = response.results[0].geometry.location.lat;
+
+                        let longitude = response.results[0].geometry.location.lng;
+
+                        let apiKeyWeather = "&APPID=5177a7e3f7a42cff3fe728e088dd8b0d";
+
+                        let queryURLWeather = "https://api.openweathermap.org/data/2.5/weather?lat="+ lattitude + "&" + "lon="+ longitude + apiKeyWeather + "&units=imperial";
+
+                            $.ajax({
+
+                                url: queryURLWeather,
+
+                                type: "GET"
+
+                             }).done(response => {
+
+                        console.log(response);
+
+                        let currentTemp = response.main.temp;
+
+                        let currentWind = response.wind.speed;
+
+                        let sunriseTime = new Date(response.sys.sunrise *1000);
+
+                        let sunsetTime = new Date(response.sys.sunset *1000);
+
+                        $("#list").append(`<h3 style="color: White;">Current Temp: ${Math.floor(currentTemp)}°F</h3>`);
+                        $("#list").append(`<h3 style="color: White;">Current Wind Speed: ${Math.floor(currentWind)}MPH</h3>`);
+                        $("#list").append(`<h3 style="color: White;">Sunrise time: ${sunriseTime.toLocaleString()}</h3>`);
+                        $("#list").append(`<h3 style="color: White;">Sunset time: ${sunsetTime.toLocaleString()}</h3>`);
+
+
+                });
+
+                });
+
+            };
+
+            weatherAPI();
     
     });
 
-
-
 });
-
-
