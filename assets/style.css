@@ -45,6 +45,12 @@ body {
 	color:white;
 }
 
+#list h1{
+	font-family: trebuchet ms;
+	text-align:center;
+	color:white;
+}
+
 #header h4{
 	
 	text-align:center;
@@ -130,6 +136,14 @@ body {
     height: 100%;
 }
 
+.northernCaBgImage {
+	background-image: url(./images/carina-tysvaer-21855.jpg);
+	background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
 #links {
 	position: relative;
 }
