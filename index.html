@@ -7,8 +7,15 @@
     
     <!-- jquery & our scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- <script src="assets/logic.js"></script> -->
+    <script src="assets/logic.js">
+    
+    <link rel="icon" href="assets/images/favicon (1).ico">
 
+    <!--Link to firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+
+    <!--Link to animate.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 
 
     <!-- Stylesheet -->
@@ -18,6 +25,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <!-- or -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    
+
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
 
 
     <title>Ski-cial Media</title>
@@ -25,10 +39,29 @@
   </head>
   <body>
     <div id="container">
+
       <div class = "grid">
+
         <div id = "header">
+          <div class="fallingSnow">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+     
+          </div>
           <!-- <img src="assets/images/skiing.png" alt="mountains"> -->
-          <h1 id="header-text">SKI-cial Media</h1>
+          <!-- <img id="logo" src="assets/images/favicon (1).ico"> -->
+
+          <h1> Ski-cial Media<!-- Ski-cial Media --></h1>
+
+          <h4> Let us help you choose your mountain </h4>
         </div> <!-- header -->
 
         <div class="navbar">
@@ -38,30 +71,82 @@
           </li>
 
           <li id="resorts">
-            <a>Resorts by State</a>
+            <a>Choose a region or state</a>
             <div class="dropdown">
               <div>
-                <a href="#">Colorado</a>
+                <a href="#" id="colorado-button">Colorado</a>
               </div>
               <div>
-                <a href="#">Utah</a>
+                <a href="#" id="utah-button">Utah</a>
               </div>
               <div>
-                <a href="#">California</a>
+                <a href="#" id="central-california-button" >California: Central &amp; Southern</a>
+              </div>
+              <div>
+                <a href="#" id="northern-california-button" >California: Lake Tahoe &amp; Northern</a>
+              </div>
+              <!-- <div>
+                <div>
+                    <a href="#">NY, NJ and PA</a>
+                </div>
+                <a href="#">Northern Rockies</a>
+              </div>
+              <div>
+                <a href="#">Midwest</a>
+              </div>
+              <div>
+                <a href="#">Mid-Atlantic</a>
+              </div>
+              <div>
+                <a href="#">Southwest</a>
+              </div>
+              <div>
+                <a href="#">Southeast</a>
+              </div>
+              <div>
+                <a href="#">Alaska</a>
+              </div>
+              <div>
+                <a href="#">Eastern Canada</a>
+              </div>
+              <div>
+                <a href="#">Central Canada</a>
+              </div>
+              <div>
+                <a href="#">Western Canada</a>
+              </div>
+              <div>
+                <a href="#">New England</a>
+              </div> -->
+              
+            </div> <!-- dropdown -->
+          </li>
+
+         <li id="links">
+            <a>Links</a>
+            <div class="dropdown">
+              <div>
+                <a href="https://www.hotels.com/" target="_blank">Hotels.com</a>
+              </div>
+              <div>
+                <a href="https://www.airbnb.com/" target="_blank">airBnB.com</a>
+              </div>
+              <div>
+                <a href="https://www.liftopia.com/" target="_blank">Liftopedia</a>
               </div>
             </div>
           </li>
-
-          <li>
-            <a id="links" href="links.html">Links</a>
-          </li>
+          <!-- <div>
+            <a id="links">Links</a>
+          </div> -->
                   <!-- </nav> -->
           <!-- </div> --> 
         </div>  
 
 
         <!-- <div class="sidebar"> -->
-        
+        <div id="map-image"> <!-- aka empty green box in the top right -->
+        </div> <!-- map-image -->
 
       
         <div id="search">
@@ -69,32 +154,35 @@
           <input type="text"> 
           
           <button>Submit</button>
+
         </div> <!-- search -->
         
         
         <form id="sign-in">
-          <h2>Sign up or Log in</h2>
-          <hr>
+          <h2>Sign up for our newsletter</h2>
+          <hr class="grey-hr">
           <ul>
             <li>
               <label for="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="John Smith" required="required">
+              <input id="name_input" type="text"  name="name" placeholder="John Smith" required="required">
             </li>
             <li>
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="example@gmail.com" required="required">
+              <input id="email_input" type="email" name="email" placeholder="example@gmail.com" required="required">
             </li>
-            <li>
+         <!--    <li>
               <label for="password">Password</label>
               <input id="password" name="password" required="required">
-            </li>
+            </li> -->
           </ul>
-          <input type="submit">
+          <input id="submit" type="submit"> <br>
+          <h3 id="alert"></h3>
+         
         </form>
           
 
-        <div id="recent-searches">
-          <h2>Recent searches</h2>
+        <!-- <div id="recent-searches">
+          <h2>Recently viewed</h2>
           <hr>
           <ul>
             <li>Vail</li>
@@ -102,19 +190,65 @@
             <li>Breckenridge</li>
             <li>Keystone</li>
           </ul>
-        </div> <!-- recent-searches -->
-      <!-- </div> sidebar -->
+        </div> --> <!-- recent-searches -->
+      <!-- sidebar -->
 
        <!-- XXXXXXXXXXXXXXXXXXXXXXXXXX MAIN CONTENT AREA XXXXXXXXXXXXXXXXXXXXXXXXXX -->
-        <!-- <div id="main-content-area"> -->
-        <div id="map"> 
+        <!--  id="main-content-area" -->
+        <div id="map" class="animated fadeIn"> 
           MAP
         </div>  <!-- map -->
 
-        <div id="list"> List
+        <div id="list"> 
+          <h2 style="padding-left:20px;"> Winter Park Resort </h2> <hr>
+          <table style="width: 150px; height: 252px; padding-left: 20px;">
+              <tbody>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">Temperature</td>
+              <td style="height: 23px; width: 184px;">XX</td>
+              </tr>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">Wind</td>
+              <td style="height: 23px; width: 184px;">XX</td>
+              </tr>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">Snow&nbsp;</td>
+              <td style="height: 23px; width: 184px;">XX</td>
+              </tr>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">Recent snowfall</td>
+              <td style="height: 23px; width: 184px;">XX</td>
+              </tr>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">Open trails</td>
+              <td style="height: 23px; width: 184px;">XX</td>
+              </tr>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">Open lifts</td>
+              <td style="height: 23px; width: 184px;">XX</td>
+              </tr>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">Base depth</td>
+              <td style="height: 23px; width: 184px;">XX</td>
+              </tr>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">Summit depth</td>
+              <td style="height: 23px; width: 184px;">XX</td>
+              </tr>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">Last snowfall</td>
+              <td style="height: 23px; width: 184px;">XX</td>
+              </tr>
+              <tr style="height: 23px;">
+              <td style="height: 23px; width: 159px;">&nbsp;</td>
+              <td style="height: 23px; width: 184px;">&nbsp;</td>
+              </tr>
+              </tbody>
+              </table>
+              <p>&nbsp;</p>
         </div> <!-- list -->
 
-        <footer id="footer"> &copy 2017 Copyright Ski-cial Media
+        <footer id="footer"> &copy; 2017 Copyright Ski-cial Media
         </footer>
 
       </div> <!-- end of grid-- >
@@ -131,7 +265,20 @@
       }
     </script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzxrQ1LvZFppwAKMvIF3Yom_r--aECrM&callback=myMap"></script>    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzxrQ1LvZFppwAKMvIF3Yom_r--aECrM&callback=myMap"></script>   
+
+
+    
+ 
+       
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+      <script src="assets/logic.js"> </script>
+
+      
+
+
   </body>
 </html>
 
