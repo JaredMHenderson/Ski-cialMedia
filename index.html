@@ -27,6 +27,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     
 
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
+
 
     <title>Ski-cial Media</title>
 
@@ -158,11 +164,11 @@
           <ul>
             <li>
               <label for="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="John Smith" required="required">
+              <input id="name_input" type="text"  name="name" placeholder="John Smith" required="required">
             </li>
             <li>
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="example@gmail.com" required="required">
+              <input id="email_input" type="email" name="email" placeholder="example@gmail.com" required="required">
             </li>
          <!--    <li>
               <label for="password">Password</label>
@@ -170,6 +176,7 @@
             </li> -->
           </ul>
           <input id="submit" type="submit"> <br>
+          <h3 id="alert"></h3>
          
         </form>
           
@@ -261,26 +268,17 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzxrQ1LvZFppwAKMvIF3Yom_r--aECrM&callback=myMap"></script>   
 
 
+    
+ 
+       
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-      <script>
-        // Initialize Firebase
-        var config = {
-          apiKey: "AIzaSyCGFZJ4_F1ujKk_g57Xc0npkyrComAgsMg",
-          authDomain: "ski-resort-app.firebaseapp.com",
-          databaseURL: "https://ski-resort-app.firebaseio.com",
-          projectId: "ski-resort-app",
-          storageBucket: "ski-resort-app.appspot.com",
-          messagingSenderId: "195192287950"
-        };
-        firebase.initializeApp(config);
-      </script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-      <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
+      <script src="assets/logic.js"> </script>
 
       
+
+
   </body>
 </html>
 
