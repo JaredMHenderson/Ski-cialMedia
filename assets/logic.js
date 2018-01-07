@@ -47,8 +47,6 @@ function submitClick(event) {
 
 	$("#submit").on("click", submitClick);
 
-// TODO-
-// Research how to share a firebase database
 
 
 $(function(){
