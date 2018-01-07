@@ -265,6 +265,20 @@ body {
 	background-color: #dddddd;
 }
 
+.back-button{
+	position: relative;
+}
+
+.weatherIcon{
+	height: 60px;
+	width: 60px;
+}
+
+.weatherText{
+	text-align: center;
+	color: white;
+}
+
 #footer {
 	font-family:trebuchet ms;
 	grid-area: ftr;
