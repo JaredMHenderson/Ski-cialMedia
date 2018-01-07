@@ -61,11 +61,12 @@ $(function(){
 
 //on click function for colorado button
 function coloradoButtonClick () {
-    $("#list").empty().removeClass('centralCaBgImage northernCaBgImage utahBgImage').addClass('coloradoBgImage').append(`<h1 class="animated fadeIn">Colorado Resorts</h1>`);
+    $("#list").empty().removeClass('centralCaBgImage northernCaBgImage utahBgImage weatherText').addClass('coloradoBgImage').append(`<h1 class="animated fadeIn">Colorado Resorts</h1>`);
 
     // creates a button for each resort in the array and gives it a unique id with the name of the resort
 
     for (var i = 0; i < coloradoResorts.length; i++) {
+
         $("#list").append(`<div><button class="animated fadeInUp resort-buttons" data-state="Colorado" 
             data-name='${coloradoResorts[i]}'>${coloradoResorts[i]}</button><div>`);
     };
@@ -87,7 +88,7 @@ function coloradoButtonClick () {
 
 //on click function for utah button
     function utahButtonClick() {
-        $("#list").empty().removeClass('coloradoBgImage centralCaBgImage northernCaBgImage').addClass('utahBgImage').append(`<h1 class="animated fadeIn">Utah Resorts</h1>`);
+        $("#list").empty().removeClass('coloradoBgImage centralCaBgImage northernCaBgImage weatherText').addClass('utahBgImage').append(`<h1 class="animated fadeIn">Utah Resorts</h1>`);
 
         for (var i = 0; i < utahResorts.length; i++) {
 
@@ -110,7 +111,8 @@ function coloradoButtonClick () {
 
 //on click function for central CA button
     function centralCaButtonClick(){
-        $("#list").empty().removeClass('coloradoBgImage utahCaBgImage northernCaBgImage').addClass('centralCaBgImage').append(`<h1 class="animated fadeIn">Central California Resorts</h1>`);
+
+        $("#list").empty().removeClass('coloradoBgImage utahCaBgImage northernCaBgImage weatherText').addClass('centralCaBgImage').append(`<h1 class="animated fadeIn">Central California Resorts</h1>`);
 
         for (var i = 0; i < centralCaResorts.length; i++) {
 
@@ -130,7 +132,7 @@ $('#central-california-button').on("click", centralCaButtonClick);
 
     //on click function for northern CA button
     function northernCaButtonClick(){
-        $("#list").empty().removeClass('coloradoBgImage utahCaBgImage centralCaBgImage').addClass('northernCaBgImage').append(`<h1 class="animated fadeIn">Northern California Resorts</h1>`);
+        $("#list").empty().removeClass('coloradoBgImage utahCaBgImage centralCaBgImage weatherText').addClass('northernCaBgImage').append(`<h1 class="animated fadeIn">Northern California Resorts</h1>`);
         for (var i = 0; i < northernCaResorts.length; i++) {
 
             $("#list").append(`<div><button class="animated fadeInUp resort-buttons" data-state="Northern California" data-name='${northernCaResorts[i]}'>${northernCaResorts[i]}</button></div>`);
@@ -162,28 +164,90 @@ $('#northern-california-button').on("click", northernCaButtonClick)
         else if ($(this).attr('data-place') === 'Northern California') {
             northernCaButtonClick()
         }
+
+        $('#list').removeClass('weatherText');
+
     });
+
     $(document).on('click', '.resort-buttons', function(){ 
 
         //place and state are unique for each button
         let place = $(this).attr('data-name');
         let state = $(this).attr('data-state');
 
+        $('#list').empty();
         
-        $("#list").empty().append(`<input type='button' class='back-button' data-place='${state}' value=Back /><h1 class='animated fadeIn'>${place} Info</h1>`);
-        
-    $('#map').html(`<iframe 
-        width="100%" 
-        height="100%" 
-        frameborder="0" 
-        style="border:0" 
-        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=${place}+${state}&zoom=7" allowfullscreen>
-        </iframe>`);
+        $('#map').html(`<iframe 
+            width="100%" 
+            height="100%" 
+            frameborder="0" 
+            style="border:0" 
+            src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=${place}+${state}&zoom=7" allowfullscreen>
+            </iframe>`);
+                    
+        let weatherAPI = () => {
+
+            let apiKeyGeo = "AIzaSyC_AXkLRiDbkJwyfbAFjyV_F5FeavMdqOs";
+
+            let queryURLGeo = "https://maps.googleapis.com/maps/api/geocode/json?address="+ place + state + "&key=" + apiKeyGeo;
+
+                $.ajax({
+
+                    url: queryURLGeo,
+
+                    type: "GET"
+
+                }).done(response => {
+
+                        let lattitude = response.results[0].geometry.location.lat;
+
+                        let longitude = response.results[0].geometry.location.lng;
+
+                        let apiKeyWeather = "&APPID=5177a7e3f7a42cff3fe728e088dd8b0d";
+
+                        let queryURLWeather = "https://api.openweathermap.org/data/2.5/weather?lat="+ lattitude + "&" + "lon="+ longitude + apiKeyWeather + "&units=imperial";
+
+                            $.ajax({
+
+                                url: queryURLWeather,
+
+                                type: "GET"
+
+                             }).done(response => {
+
+                        console.log(response);
+
+                        let currentTemp = response.main.temp;
+
+                        let currentWind = response.wind.speed;
+
+                        let icon = response.weather[0].icon
+
+                        let iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
+
+                        let weatherDiscrption = response.weather[0].description;
+
+                        let sunriseTime = new Date(response.sys.sunrise *1000);
+
+                        let sunsetTime = new Date(response.sys.sunset *1000);
+
+                        $("#list").append(`<input type='button' class='back-button' style='float: left;' data-place='${state}' value=Back /><h1 class='animated fadeIn'>${place}<br>Weather Info</h1>`);
+                        $("#list").append(`<img class='animated fadeIn weatherIcon' src= ${iconURL} alt= ${icon.description}></img> <br>
+                                            <h3 class='animated fadeIn'>${weatherDiscrption}</h3>`).addClass('weatherText');;
+                        $("#list").append(`<h3 class='animated fadeIn'>Current Temp: ${Math.floor(currentTemp)}°F</h3>`);
+                        $("#list").append(`<h3 class='animated fadeIn'>Current Wind Speed: ${Math.floor(currentWind)}MPH</h3>`);
+                        $("#list").append(`<h3 class='animated fadeIn'>Sunrise:<br>${sunriseTime.toLocaleString()} (MST)</h3>`);
+                        $("#list").append(`<h3 class='animated fadeIn'>Sunset:<br>${sunsetTime.toLocaleString()} (MST)</h3>`);
+
+
+                });
+
+                });
+
+            };
+
+            weatherAPI();
     
     });
 
-
-
 });
-
-
