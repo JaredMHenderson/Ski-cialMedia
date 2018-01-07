@@ -238,8 +238,8 @@ $('#northern-california-button').on("click", northernCaButtonClick)
                                             <h3 class='animated fadeIn'>${weatherDiscrption}</h3>`).addClass('weatherText');;
                         $("#list").append(`<h3 class='animated fadeIn'>Current Temp: ${Math.floor(currentTemp)}°F</h3>`);
                         $("#list").append(`<h3 class='animated fadeIn'>Current Wind Speed: ${Math.floor(currentWind)}MPH</h3>`);
-                        $("#list").append(`<h3 class='animated fadeIn'>Sunrise time:<br>${sunriseTime.toLocaleString()} (MST)</h3>`);
-                        $("#list").append(`<h3 class='animated fadeIn'>Sunset time:<br>${sunsetTime.toLocaleString()} (MST)</h3>`);
+                        $("#list").append(`<h3 class='animated fadeIn'>Sunrise:<br>${sunriseTime.toLocaleString()} (MST)</h3>`);
+                        $("#list").append(`<h3 class='animated fadeIn'>Sunset:<br>${sunsetTime.toLocaleString()} (MST)</h3>`);
 
 
                 });

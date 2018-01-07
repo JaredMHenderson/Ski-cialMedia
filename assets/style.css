@@ -265,16 +265,13 @@ body {
 	background-color: #dddddd;
 }
 
-.back-button{
-	position: relative;
-}
-
 .weatherIcon{
 	height: 60px;
 	width: 60px;
 }
 
 .weatherText{
+	clear: both;
 	text-align: center;
 	color: white;
 }
