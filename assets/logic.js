@@ -1,5 +1,3 @@
-
-
 var config = {
           apiKey: "AIzaSyCGFZJ4_F1ujKk_g57Xc0npkyrComAgsMg",
           authDomain: "ski-resort-app.firebaseapp.com",
