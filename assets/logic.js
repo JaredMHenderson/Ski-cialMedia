@@ -80,7 +80,7 @@ $(function(){
 
 //on click function for colorado button
 function coloradoButtonClick () {
-    $("#list").empty().removeClass('centralCaBgImage northernCaBgImage utahBgImage weatherText').addClass('coloradoBgImage').append(`<h1 class="animated fadeIn">Colorado Resorts</h1>`);
+    $("#list").empty().removeClass('centralCaBgImage northernCaBgImage utahBgImage weatherText searchBgImage').addClass('coloradoBgImage').append(`<h1 class="animated fadeIn">Colorado Resorts</h1>`);
 
     // creates a button for each resort in the array and gives it a unique id with the name of the resort
 
@@ -107,7 +107,7 @@ function coloradoButtonClick () {
 
 //on click function for utah button
     function utahButtonClick() {
-        $("#list").empty().removeClass('coloradoBgImage centralCaBgImage northernCaBgImage weatherText').addClass('utahBgImage').append(`<h1 class="animated fadeIn">Utah Resorts</h1>`);
+        $("#list").empty().removeClass('coloradoBgImage centralCaBgImage northernCaBgImage weatherText searchBgImage').addClass('utahBgImage').append(`<h1 class="animated fadeIn">Utah Resorts</h1>`);
 
         for (var i = 0; i < utahResorts.length; i++) {
 
@@ -131,7 +131,7 @@ function coloradoButtonClick () {
 //on click function for central CA button
     function centralCaButtonClick(){
 
-        $("#list").empty().removeClass('coloradoBgImage utahCaBgImage northernCaBgImage weatherText').addClass('centralCaBgImage').append(`<h1 class="animated fadeIn">Central California Resorts</h1>`);
+        $("#list").empty().removeClass('coloradoBgImage utahCaBgImage northernCaBgImage weatherText searchBgImage').addClass('centralCaBgImage').append(`<h1 class="animated fadeIn">Central California Resorts</h1>`);
 
         for (var i = 0; i < centralCaResorts.length; i++) {
 
@@ -152,7 +152,7 @@ $('#central-california-button').on("click", centralCaButtonClick);
     //on click function for northern CA button
     
     function northernCaButtonClick(){
-        $("#list").empty().removeClass('coloradoBgImage utahCaBgImage centralCaBgImage weatherText').addClass('northernCaBgImage').append(`<h1 class="animated fadeIn">Northern California Resorts</h1>`);
+        $("#list").empty().removeClass('coloradoBgImage utahCaBgImage centralCaBgImage weatherText searchBgImage').addClass('northernCaBgImage').append(`<h1 class="animated fadeIn">Northern California Resorts</h1>`);
         for (var i = 0; i < northernCaResorts.length; i++) {
 
             $("#list").append(`<div><button class="animated fadeInUp resort-buttons" data-state="Northern California" data-name='${northernCaResorts[i]}'>${northernCaResorts[i]}</button></div>`);
