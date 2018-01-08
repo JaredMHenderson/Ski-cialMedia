@@ -152,7 +152,6 @@ $('#central-california-button').on("click", centralCaButtonClick);
 
 $('#northern-california-button').on("click", northernCaButtonClick) 
 
-
     //On click function for each of the resort buttons
     $(document).on('click', '.back-button', function () {
         if($(this).attr('data-place') === 'Colorado') {
@@ -179,6 +178,7 @@ $('#northern-california-button').on("click", northernCaButtonClick)
     function renderButtons() {
 
         $("#list").empty();
+        $("#list").append('<h1 class="animated fadeIn weatherText">User Defined Areas</h1>');
 
  
         for (let i = 0; i < userButtons.length; i++) {
@@ -187,10 +187,11 @@ $('#northern-california-button').on("click", northernCaButtonClick)
             userButton.addClass('class="animated fadeInUp resort-buttons');
             userButton.attr("data-name", userButtons[i]);
             userButton.text(userButtons[i]);
-            $("#list").append('<h1 class="animated fadeIn weatherText">User Defined Areas</h1>');
             $("#list").append(userButton);
         }
     }
+
+$('#userDefined').on("click", renderButtons);
 
      $("#submit").on("click", function (event) {
 
