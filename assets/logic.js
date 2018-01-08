@@ -51,6 +51,27 @@ function submitClick(event) {
 
 $(function(){
 
+
+    function submitButtonClick(){
+        let searchedPlace = $('#searchBox').val();
+        $("#list").empty().removeClass('centralCaBgImage northernCaBgImage utahBgImage weatherText').addClass("searchBgImage").append(`<h1 class="animated fadeIn">${searchedPlace}</h1>`)
+    
+        $('#map').html(`<iframe 
+            width="100%" 
+            height="100%" 
+            frameborder="0" 
+            style="border:0" 
+            src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=${searchedPlace}&zoom=7" allowfullscreen>
+            </iframe>`);
+
+        $('#searchBox').val("");
+    
+    
+    };
+
+    $('#searchButton').on("click", submitButtonClick);
+    
+
     // array of resorts that show up when each state Button is clicked
     let coloradoResorts = ["Keystone", "Copper Mountain", "Loveland", "Monarch", "Arapahoe Basin", "Crested Butte", "Vail"];
     let utahResorts = ["Beaver Mountain", "Brighton Ski Resort", "Dear Valley", "Sundance Resort", "Solitude Mountain"];
@@ -129,6 +150,7 @@ $('#central-california-button').on("click", centralCaButtonClick);
 
 
     //on click function for northern CA button
+    
     function northernCaButtonClick(){
         $("#list").empty().removeClass('coloradoBgImage utahCaBgImage centralCaBgImage weatherText').addClass('northernCaBgImage').append(`<h1 class="animated fadeIn">Northern California Resorts</h1>`);
         for (var i = 0; i < northernCaResorts.length; i++) {
@@ -148,7 +170,9 @@ $('#central-california-button').on("click", centralCaButtonClick);
 $('#northern-california-button').on("click", northernCaButtonClick) 
 
 
-    //On click function for each of the resort buttons
+    //On click function for back button
+
+    
     $(document).on('click', '.back-button', function () {
         if($(this).attr('data-place') === 'Colorado') {
             coloradoButtonClick();
@@ -166,6 +190,8 @@ $('#northern-california-button').on("click", northernCaButtonClick)
         $('#list').removeClass('weatherText');
 
     });
+
+    //On click function for each of the resort buttons
 
     $(document).on('click', '.resort-buttons', function(){ 
 
