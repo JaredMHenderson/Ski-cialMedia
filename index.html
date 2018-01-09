@@ -106,6 +106,9 @@
               <div>
                 <a href="#" id="northern-california-button" >California: Lake Tahoe &amp; Northern</a>
               </div>
+              <div>
+                <a href="#" id="userDefined">User Defined</a>
+              </div>
               <!-- <div>
                 <div>
                     <a href="#">NY, NJ and PA</a>
@@ -170,9 +173,18 @@
       
         <div id="search">
           <div> Search a State, Town or Resort </div>
-          <input type="text"> 
+
+          <input type="text" id="searchBox"> 
           
-          <button>Search</button>
+
+          <button type="button" id="searchButton">Search</button>
+
+          
+
+          <!--<input type="text" id="searchContent">
+          <button id="submit">Submit</button>-->
+
+
 
         </div> <!-- search -->
         
@@ -220,7 +232,12 @@
        <!-- XXXXXXXXXXXXXXXXXXXXXXXXXX MAIN CONTENT AREA XXXXXXXXXXXXXXXXXXXXXXXXXX -->
         <!--  id="main-content-area" -->
         <div id="map" class="animated fadeIn"> 
-          MAP
+        <div id="state-map"><video autoplay muted loop id="myVideo">
+            <source src="./assets/video/slowmovid.mp4" type="video/mp4">
+          </video></div>
+          <!--
+          
+          -->
         </div>  <!-- map -->
 
         <div id="list"> 
@@ -280,16 +297,16 @@
     </div>
     <script>
        /* this function must be created before the API is loaded (otherwise callback is lost) */
-      function myMap() {
-        var mapProp = {
-            center: new google.maps.LatLng(39.800,-106.200),
-            zoom: 8,
-        };
-        var map = new google.maps.Map(document.getElementById("map"),mapProp);
-      }
+      // function myMap() {
+      //   var mapProp = {
+      //       center: new google.maps.LatLng(39.800,-106.200),
+      //       zoom: 8,
+      //   };
+      //   var map = new google.maps.Map(document.getElementById("map"),mapProp);
+      // }
     </script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzxrQ1LvZFppwAKMvIF3Yom_r--aECrM&callback=myMap"></script>   
+    <script src="assets/logic.js"> </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzxrQ1LvZFppwAKMvIF3Yom_r--aECrM&libraries=places&callback=mapsInitialized"></script>
 
 
     
@@ -297,11 +314,6 @@
        
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-      <script src="assets/logic.js"> </script>
-
-      
-
 
   </body>
 </html>
