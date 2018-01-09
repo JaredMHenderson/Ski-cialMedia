@@ -34,16 +34,30 @@
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
 
 
-    <title>Ski-cial Media</title>
+    <title>Snow Scout</title>
 
   </head>
   <body>
     <div id="container">
-
-      <div class = "grid">
-
-        <div id = "header">
-          <div class="fallingSnow">
+      <div class="fallingSnow">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
@@ -56,12 +70,21 @@
                 <span></span>
      
           </div>
+      <div class = "grid">
+
+        <div id = "header">
+          <img id="image" src="assets/images/groomed.png">
+          
           <!-- <img src="assets/images/skiing.png" alt="mountains"> -->
           <!-- <img id="logo" src="assets/images/favicon (1).ico"> -->
+        
+        <div id="header-text">
 
-          <h1> Ski-cial Media<!-- Ski-cial Media --></h1>
+
+          <h1>Snow Scout<!-- Ski-cial Media --></h1>
 
           <h4> Let us help you choose your mountain </h4>
+        </div>
         </div> <!-- header -->
 
         <div class="navbar">
@@ -147,37 +170,50 @@
         </div>  
 
 
-        <!-- <div class="sidebar"> -->
-        <div id="map-image"> <!-- aka empty green box in the top right -->
-        </div> <!-- map-image -->
+    
 
       
         <div id="search">
           <div> Search a State, Town or Resort </div>
-          <input type="text" id="searchContent">
-          <button id="submit">Submit</button>
+
+          <input type="text" id="searchBox"> 
+          
+
+          <button type="button" id="searchButton">Search</button>
+
+          
+
+          <!--<input type="text" id="searchContent">
+          <button id="submit">Submit</button>-->
+
+
 
         </div> <!-- search -->
         
+        <div id="intro">
+            <h2> Let us help you choose your mountain </h2> <hr>
+            <p> Choose a region or state, select a resort, and check current weather and snow conditions. Use the links menu to find a hotel or airbnb, buy a lift ticket, and rent your gear!
+            </p>
+        </div> <!-- intro -->
         
         <form id="sign-in">
           <h2>Sign up for our newsletter</h2>
           <hr class="grey-hr">
-          <ul>
-            <li>
+          
+            <div>
               <label for="name">Name</label>
               <input id="name_input" type="text"  name="name" placeholder="John Smith" required="required">
-            </li>
-            <li>
+            </div>
+            <div>
               <label for="email">Email</label>
               <input id="email_input" type="email" name="email" placeholder="example@gmail.com" required="required">
-            </li>
+            </div>
          <!--    <li>
               <label for="password">Password</label>
               <input id="password" name="password" required="required">
             </li> -->
           </ul>
-          <input id="submit" type="submit"> <br>
+          <button id="submit">Submit</button> <br>
           <h3 id="alert"></h3>
          
         </form>
@@ -198,7 +234,12 @@
        <!-- XXXXXXXXXXXXXXXXXXXXXXXXXX MAIN CONTENT AREA XXXXXXXXXXXXXXXXXXXXXXXXXX -->
         <!--  id="main-content-area" -->
         <div id="map" class="animated fadeIn"> 
-          MAP
+        <div id="state-map"><video autoplay muted loop id="myVideo">
+            <source src="./assets/video/slowmovid.mp4" type="video/mp4">
+          </video></div>
+          <!--
+          
+          -->
         </div>  <!-- map -->
 
         <div id="list"> 
@@ -258,16 +299,16 @@
     </div>
     <script>
        /* this function must be created before the API is loaded (otherwise callback is lost) */
-      function myMap() {
-        var mapProp = {
-            center: new google.maps.LatLng(39.800,-106.200),
-            zoom: 8,
-        };
-        var map = new google.maps.Map(document.getElementById("map"),mapProp);
-      }
+      // function myMap() {
+      //   var mapProp = {
+      //       center: new google.maps.LatLng(39.800,-106.200),
+      //       zoom: 8,
+      //   };
+      //   var map = new google.maps.Map(document.getElementById("map"),mapProp);
+      // }
     </script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzxrQ1LvZFppwAKMvIF3Yom_r--aECrM&callback=myMap"></script>   
+    <script src="assets/logic.js"> </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzxrQ1LvZFppwAKMvIF3Yom_r--aECrM&libraries=places&callback=mapsInitialized"></script>
 
 
     
@@ -275,11 +316,6 @@
        
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-      <script src="assets/logic.js"> </script>
-
-      
-
 
   </body>
 </html>
