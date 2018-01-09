@@ -1,3 +1,17 @@
+var mapElement;
+var map;
+var markerArray=[];
+var placesSearch;
+
+var mapsInitialized = () =>
+{
+    map = new google.maps.Map(document.getElementById('state-map'),
+        {zoom: 6,
+            center: { lat: 39.7392, lng: -104.9903}
+        });
+    placesSearch = new google.maps.places.PlacesService(map);
+}
+
 var config = {
           apiKey: "AIzaSyCGFZJ4_F1ujKk_g57Xc0npkyrComAgsMg",
           authDomain: "ski-resort-app.firebaseapp.com",
@@ -51,6 +65,32 @@ function submitClick(event) {
 
 $(function(){
 
+    function getPlaces(index, placesArray)
+    {
+        placesSearch.textSearch({query: placesArray[index]}, function (placesResult)
+        {
+            if(index === 0){
+                markerArray.forEach(marker =>
+                {
+                    marker.setMap(null);
+                });
+                map.setCenter(placesResult[0].geometry.location);
+            }
+            if(placesResult && placesResult[0])
+            {
+                markerArray.push(new google.maps.Marker({
+                    position: placesResult[0].geometry.location,
+                    map: map
+                }));
+            }
+
+            if(index < placesArray.length - 2)
+            {
+                getPlaces(++index, placesArray);
+            }
+        });
+    }
+
 
     function submitButtonClick(){
         let searchedPlace = $('#searchBox').val();
@@ -78,6 +118,7 @@ $(function(){
     let centralCaResorts = ["Mammoth Mountain", "Badger Pass", "Dodge Ridge", "China Peak"];
     let northernCaResorts = ["Bear Valley", "Boreal Mountain Resort", "Dodge Ridge", "Donner Ski Ranch", "Heavenly Mountain"];
 
+
 //on click function for colorado button
 function coloradoButtonClick () {
     $("#list").empty().removeClass('centralCaBgImage northernCaBgImage utahBgImage weatherText searchBgImage').addClass('coloradoBgImage').append(`<h1 class="animated fadeIn">Colorado Resorts</h1>`);
@@ -92,16 +133,11 @@ function coloradoButtonClick () {
 
     // adds the map of resorts
 
+    getPlaces(0, coloradoResorts);
+
     setTimeout(() => {
         $('iframe').addClass('animated fadeIn');
     }, 1000);
-    $('#map').html(`<iframe
-        width="100%" 
-        height="100%" 
-        frameborder="0" 
-        style="border:0" 
-        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=Ski+Resort+Colorado&zoom=7" allowfullscreen>
-        </iframe>`);
 };
     $('#colorado-button').on("click", coloradoButtonClick);
 
@@ -111,20 +147,18 @@ function coloradoButtonClick () {
 
         for (var i = 0; i < utahResorts.length; i++) {
 
-            $("#list").append(`<div><button class="animated fadeInUp resort-buttons" data-state="Utah" data-name='${utahResorts[i]}'>${utahResorts[i]}</button></div>`);
+            $("#list").append(`<div><button class="animated fadeInUp resort-buttons" data-state="Utah" 
+            data-name='${utahResorts[i]}'>${utahResorts[i]}</button></div>`);
         };
 
         // adds the map of resorts
+
+        getPlaces(0, utahResorts);
+
         setTimeout(() => {
             $('iframe').addClass('animated fadeIn');
         }, 1000);
-        $('#map').html(`<iframe 
-        width="100%" 
-        height="100%" 
-        frameborder="0" 
-        style="border:0" 
-        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=Ski+Resort+Utah&zoom=7" allowfullscreen>
-        </iframe>`);
+        
     };
     $('#utah-button').on("click", utahButtonClick);
 
@@ -135,16 +169,18 @@ function coloradoButtonClick () {
 
         for (var i = 0; i < centralCaResorts.length; i++) {
 
-            $("#list").append(`<div><button class="animated fadeInUp resort-buttons" data-state="Central California" data-name='${centralCaResorts[i]}'>${centralCaResorts[i]}</button></div>`);
+            $("#list").append(`<div><button class="animated fadeInUp resort-buttons" data-state="Central California" 
+            data-name='${centralCaResorts[i]}'>${centralCaResorts[i]}</button></div>`);
         };
 
-        $('#map').html(`<iframe 
-        width="100%" 
-        height="100%" 
-        frameborder="0" 
-        style="border:0" 
-        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=Ski+Resort,Central+California&zoom=7" allowfullscreen>
-        </iframe>`);
+        // adds the map of resorts
+
+        getPlaces(0, centralCaResorts);
+
+        setTimeout(() => {
+            $('iframe').addClass('animated fadeIn');
+        }, 1000);
+
     };
 $('#central-california-button').on("click", centralCaButtonClick);
 
@@ -155,16 +191,18 @@ $('#central-california-button').on("click", centralCaButtonClick);
         $("#list").empty().removeClass('coloradoBgImage utahCaBgImage centralCaBgImage weatherText searchBgImage').addClass('northernCaBgImage').append(`<h1 class="animated fadeIn">Northern California Resorts</h1>`);
         for (var i = 0; i < northernCaResorts.length; i++) {
 
-            $("#list").append(`<div><button class="animated fadeInUp resort-buttons" data-state="Northern California" data-name='${northernCaResorts[i]}'>${northernCaResorts[i]}</button></div>`);
+            $("#list").append(`<div><button class="animated fadeInUp resort-buttons" data-state="Northern California" 
+            data-name='${northernCaResorts[i]}'>${northernCaResorts[i]}</button></div>`);
         };
 
-        $('#map').html(`<iframe 
-        width="100%" 
-        height="100%" 
-        frameborder="0" 
-        style="border:0" 
-        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=Ski+Resort,Northern+California&zoom=7" allowfullscreen>
-        </iframe>`); 
+        // adds the map of resorts
+
+        getPlaces(0, northernCaResorts);
+
+        setTimeout(() => {
+            $('iframe').addClass('animated fadeIn');
+        }, 1000);
+
     }
 
 $('#northern-california-button').on("click", northernCaButtonClick) 

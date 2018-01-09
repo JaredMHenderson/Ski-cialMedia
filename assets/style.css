@@ -8,6 +8,12 @@ body {
 	margin: auto;
 }
 
+#state-map
+{
+	width:100%;
+    height:100%;
+}
+
 #logo {
 	width:20px;
 }
@@ -96,6 +102,16 @@ body {
 }
 #resorts:hover div {
 	display: block;
+}
+
+
+#myVideo {
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+    width: 100%;
+    object-fit: cover;
+
 }
 
 /* class to style buttons for each resort after region is clicked */
@@ -265,6 +281,7 @@ body {
 }
 
 #map {
+	overflow: hidden;
 	grid-area: map;
 	background-color: #dddddd;
 }
