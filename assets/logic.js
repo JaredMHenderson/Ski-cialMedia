@@ -228,6 +228,21 @@ $('#userDefined').on("click", renderButtons);
 
             let queryURLGeo = "https://maps.googleapis.com/maps/api/geocode/json?address="+ place + state + "&key=" + apiKeyGeo;
 
+
+            let apiLiftieURL = "https://cors-anywhere.herokuapp.com/https://liftie.info/api/resort/breck";
+
+            $.ajax({
+
+            url: apiLiftieURL,
+
+            type: "GET"
+
+                }).done(response => {
+
+                console.log(response);
+
+                });
+
                 $.ajax({
 
                     url: queryURLGeo,
