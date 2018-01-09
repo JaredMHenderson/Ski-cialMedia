@@ -58,7 +58,7 @@ body {
 	width:500px;
 	height:100px;
 	margin-left:30%;
-	background-color:#2b2b2b;
+	background-color:#527ea0;
 	margin-top:40px;
 }
 
@@ -79,7 +79,7 @@ body {
 }
 
 #intro h2 {
-	background-color: #2b2b2b;
+	background-color: #527ea0;
 	font-family:trebuchet ms;
 	font-size:15px;
 	color:white;
@@ -87,7 +87,7 @@ body {
 	font-size:25px;
 }
 #intro {
-	background-color: #2b2b2b;
+	background-color: #527ea0;
 }
 
 #intro p {
@@ -97,6 +97,10 @@ body {
 	margin-left:10px;
 }
 
+#intro hr {
+	background-color:#2b2b2b;
+}
+
 #list h1{
 	font-family: trebuchet ms;
 	text-align:center;
@@ -104,6 +108,8 @@ body {
 	font-size:25px;
 	text-align:center;
 }
+
+
 
 #list button {
 	width:255px;
@@ -254,7 +260,7 @@ body {
 
 #sign-in {
 	grid-area: login;
-	background-color: #2b2b2b; /*	#277ca3;*/			  /* sign in COLOR*/
+	background-color: #527ea0; /*	#277ca3;*/			  /* sign in COLOR*/
 	padding: 5px;
 }
 
@@ -513,16 +519,16 @@ body {
 	.grid {
 		
 		/*grid-template-columns: 1fr 1fr 1fr 1fr;*/
-		grid-template-rows: 150px 50px 250px 50px 500px 200px 200px 50px;
+		grid-template-rows: 150px 50px 200px 250px 50px 500px 240px  50px;
 		grid-template-columns: 450px;
 		grid-template-areas:
 			"header"
 			"nav"
+			"intro"
 			"map"   
 			"srch"
 			"list"
 			"login"
-			"intro"
 			"ftr";
 			
 	}
