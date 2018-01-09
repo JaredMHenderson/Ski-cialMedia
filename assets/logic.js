@@ -6,7 +6,7 @@ var placesSearch;
 var mapsInitialized = () =>
 {
     map = new google.maps.Map(document.getElementById('state-map'),
-        {zoom: 6,
+        {zoom: 7,
             center: { lat: 39.7392, lng: -104.9903}
         });
     placesSearch = new google.maps.places.PlacesService(map);
@@ -122,6 +122,7 @@ $(function(){
 
 //on click function for colorado button
 function coloradoButtonClick () {
+    $('#myVideo').remove();
     $("#list").empty().removeClass('centralCaBgImage northernCaBgImage utahBgImage weatherText searchBgImage').addClass('coloradoBgImage').append(`<h1 class="animated fadeIn">Colorado Resorts</h1>`);
 
     // creates a button for each resort in the array and gives it a unique id with the name of the resort
@@ -132,6 +133,7 @@ function coloradoButtonClick () {
             data-name='${coloradoResorts[i]}'>${coloradoResorts[i]}</button><div>`);
     };
 
+    
     // adds the map of resorts
 
     getPlaces(0, coloradoResorts);
@@ -144,6 +146,7 @@ function coloradoButtonClick () {
 
 //on click function for utah button
     function utahButtonClick() {
+        $('#myVideo').remove();
         $("#list").empty().removeClass('coloradoBgImage centralCaBgImage northernCaBgImage weatherText searchBgImage').addClass('utahBgImage').append(`<h1 class="animated fadeIn">Utah Resorts</h1>`);
 
         for (var i = 0; i < utahResorts.length; i++) {
@@ -165,7 +168,7 @@ function coloradoButtonClick () {
 
 //on click function for central CA button
     function centralCaButtonClick(){
-
+        $('#myVideo').remove();
         $("#list").empty().removeClass('coloradoBgImage utahCaBgImage northernCaBgImage weatherText searchBgImage').addClass('centralCaBgImage').append(`<h1 class="animated fadeIn">Central California Resorts</h1>`);
 
         for (var i = 0; i < centralCaResorts.length; i++) {
@@ -189,6 +192,7 @@ $('#central-california-button').on("click", centralCaButtonClick);
     //on click function for northern CA button
     
     function northernCaButtonClick(){
+        $('#myVideo').remove();
         $("#list").empty().removeClass('coloradoBgImage utahCaBgImage centralCaBgImage weatherText searchBgImage').addClass('northernCaBgImage').append(`<h1 class="animated fadeIn">Northern California Resorts</h1>`);
         for (var i = 0; i < northernCaResorts.length; i++) {
 
@@ -273,6 +277,7 @@ $('#userDefined').on("click", renderButtons);
         if (state != null) {
 
         $('#map').html(`<iframe 
+            class="resort-map";
             width="100%" 
             height="100%" 
             frameborder="0" 
