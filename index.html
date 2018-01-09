@@ -39,11 +39,25 @@
   </head>
   <body>
     <div id="container">
-
-      <div class = "grid">
-
-        <div id = "header">
-          <div class="fallingSnow">
+      <div class="fallingSnow">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
@@ -56,12 +70,21 @@
                 <span></span>
      
           </div>
+      <div class = "grid">
+
+        <div id = "header">
+          <img id="image" src="assets/images/groomed.png">
+          
           <!-- <img src="assets/images/skiing.png" alt="mountains"> -->
           <!-- <img id="logo" src="assets/images/favicon (1).ico"> -->
+        
+        <div id="header-text">
 
-          <h1> Ski-cial Media<!-- Ski-cial Media --></h1>
+
+          <h1>SLOPES<!-- Ski-cial Media --></h1>
 
           <h4> Let us help you choose your mountain </h4>
+        </div>
         </div> <!-- header -->
 
         <div class="navbar">
@@ -147,9 +170,7 @@
         </div>  
 
 
-        <!-- <div class="sidebar"> -->
-        <div id="map-image"> <!-- aka empty green box in the top right -->
-        </div> <!-- map-image -->
+    
 
       
         <div id="search">
@@ -157,33 +178,42 @@
 
           <input type="text" id="searchBox"> 
           
-          <button type="button" id="searchButton">Submit</button>
+
+          <button type="button" id="searchButton">Search</button>
+
+          
 
           <!--<input type="text" id="searchContent">
           <button id="submit">Submit</button>-->
 
 
+
         </div> <!-- search -->
         
+        <div id="intro">
+            <h2> Let us help you choose your mountain </h2> <hr>
+            <p> Choose a region or state, select a resort, and check current weather and snow conditions. Use the links menu to find a hotel or airbnb, buy a lift ticket, and rent your gear!
+            </p>
+        </div> <!-- intro -->
         
         <form id="sign-in">
           <h2>Sign up for our newsletter</h2>
           <hr class="grey-hr">
-          <ul>
-            <li>
+          
+            <div>
               <label for="name">Name</label>
               <input id="name_input" type="text"  name="name" placeholder="John Smith" required="required">
-            </li>
-            <li>
+            </div>
+            <div>
               <label for="email">Email</label>
               <input id="email_input" type="email" name="email" placeholder="example@gmail.com" required="required">
-            </li>
+            </div>
          <!--    <li>
               <label for="password">Password</label>
               <input id="password" name="password" required="required">
             </li> -->
           </ul>
-          <input id="submit" type="submit"> <br>
+          <button id="submit">Submit</button> <br>
           <h3 id="alert"></h3>
          
         </form>

@@ -21,48 +21,127 @@ body {
 .grid {
 	display:grid;
 
-	grid-template-rows: 100px 50px 250px 250px 50px;
+	grid-template-rows: 200px 50px 250px 250px 50px;
 	grid-template-columns: 275px 275px 275px 300px;		
 	grid-template-areas:
 		'header header header header'
 		'nav    nav    nav    srch  '
-		'map    map    list   login '
+		'map    map    list   intro '
 		'map    map    list   login '
 		'ftr    ftr    ftr    ftr';
 
 	grid-gap:.5rem;
 }
 
-#header {
-	font-family: trebuchet ms;
-	color:white;
-	padding-top:35px;
-	text-align:center;
-	grid-area: header;
-	position: relative;
-	background-color: #277ca3;                      /*   HEADER COLOR*/
-
+#image {
+	vertical-align: top;
+	width:100%;
+	margin-top:0px;
 }
 
 
-#header h1{
-	margin-top:-35px;
-	text-align:center;
+#header {
+	font-family: trebuchet ms;
 	color:white;
+	/*padding-top:35px;*/
+	/*text-align:center;*/
+	grid-area: header;
+	position: relative;
+	/*background-color: #277ca3;  */                    /*   HEADER COLOR*/
+
+}
+
+#header img {
+	z-index: -1;
+	width:100%;
+	opacity: .8;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+}
+
+#header-text {
+	width:500px;
+	height:100px;
+	margin-left:30%;
+	background-color:#2b2b2b;
+	margin-top:40px;
+}
+
+
+#header-text h1{
+	padding-top:20px;
+	text-align:center;
+	font-size:50px;
+	color:white;
+
+
+}
+
+#header-text h4 {
+	color:#2b2b2b;
+	text-align:center;
+	font-size:22px;
+	margin-top:30px;
+
+}
+
+#intro h2 {
+	background-color: #527ea0;
+	font-family:trebuchet ms;
+	font-size:15px;
+	color:#2b2b2b;
+	margin-left:10px;
+	font-size:25px;
+
+
+}
+#intro {
+	background-color: #527ea0;
+}
+
+#intro p {
+	font-family:trebuchet ms;
+	font-size:15px;
+	color:white;
+	margin-left:10px;
+}
+
+#intro hr {
+	background-color:#2b2b2b;
 }
 
 #list h1{
 	font-family: trebuchet ms;
 	text-align:center;
 	color:white;
+	font-size:25px;
+	text-align:center;
 }
 
-#header h4{
-	
-	text-align:center;
-	margin-top: -15px;
-	color:#2b2b2b;
+
+
+#list button {
+	width:255px;
+	font-family:trebuchet ms;
+	height:35px;
+	font-size:15px;
+	background-color: #2b2b2b;
+	color:white;
 }
+
+#list h3 {
+	width:250px;
+	font-family:trebuchet ms;
+	height:35px;
+	font-size:15px;
+	background-color: #2b2b2b;
+	color:white;
+	margin-left:10px;
+	margin-right:10px;
+	padding:5px;
+}
+
 
 .navbar {
 	grid-area: nav;
@@ -95,7 +174,7 @@ body {
 }
 .navbar li:hover {
 	color: white;
-	background-color: #277ca3;
+	background-color: #527ea0;
 }
 #resorts {
 	position: relative;
@@ -180,7 +259,7 @@ body {
 	position: absolute;
 	left: 0px;
 	top: calc(1em + 10px);
-	background-color: #277ca3;
+	background-color: #527ea0;
 	z-index: 999;
 }
 
@@ -194,29 +273,45 @@ body {
 }
 
 #search input {
-	width:150px;
+	width:175px;
+	height:15px;
 }
 
 #search button {
 	width:100px;
+	font-family:trebuchet ms;
+	height:22px;
+	font-size:15px;
+
+
 
 }
 
 #sign-in {
 	grid-area: login;
-	background-color: #277ca3;						  /* sign in COLOR*/
+	background-color: #527ea0; /*	#277ca3;*/			  /* sign in COLOR*/
 	padding: 5px;
 }
 
 #sign-in label{
 	color:white;
-
+	margin-top:10px;
+	font-family:trebuchet ms;
+	margin-left:5px;
+	margin-right:5px;
 }
 
+#sign-in input {
+	margin-top:10px;
+	width:225px;
+
+
+}
 #sign-in h2{
 	font-family:trebuchet ms;
-	color:white;
+	color:#2b2b2b;
 	padding-left:10px;
+	font-size:25px;
 /*	margin-top:5px;
 	margin-bottom:5px;*/
 }
@@ -249,17 +344,22 @@ body {
 }
 
 #alert {
-	color:red;
+	color:white;
+	margin-top:30px;
 	margin-left:10px;
 	font-size:17px;
 }
 
 
-#submit {
+#sign-in button {
  	width:100px;
- 	/*float:right;*/
- 	margin-right:150px;
- 	float:right;
+	font-family:trebuchet ms;
+	height:22px;
+	font-size:15px;
+	margin-top:15px;
+	float:right;
+	margin-right:5px;
+
 }
 
 
@@ -313,14 +413,7 @@ body {
 }
 
 
-#header img {
-	z-index: -1;
-	width:100%;
-	opacity: .8;
-	position: absolute;
-	bottom: 0px;
-	left: 0px;
-}
+
 
 
 
@@ -335,21 +428,26 @@ body {
 		#header h1{
 		margin-top:-35px;
 	}
-
+	
+	.fallingSnow {
+		margin-top:-55px;
+	}
 	#header-text {
-
+		
+		margin-top:10%;
+		margin-left:23%;
 	}
 
 
 	.grid {
 		
 		/*grid-template-columns:1fr 1fr;*/
-		grid-template-rows: 100px 50px 250px 400px 50px;
+		grid-template-rows: 200px 50px 250px 500px 50px;
 		grid-template-columns: 300px 300px 300px;
 		grid-template-areas:
 			"header  header  header"
 			"nav      nav    srch"
-			"map      map   login"   
+			"map      map   intro"   
 			"list     list   login"
 			"ftr      ftr     ftr";
 			
@@ -373,14 +471,23 @@ body {
 		margin-left:10px;
 	}
 
+	.fallingSnow {
+		margin-top:-100px;
+	}
+	#header-text {
+		
+		margin-top:15%;
+		margin-left:15%;
+	}
+
 	.grid {
 		
-		grid-template-rows: 100px 50px 250px 400px 50px;
+		grid-template-rows: 200px 50px 250px 500px 50px;
 		grid-template-columns: 400px 300px;
 		grid-template-areas:
 			"header    header"
 			"nav       srch   "
-			"map       login   "   
+			"map       intro   "   
 			"list      login  "
 			"ftr       ftr";
 	}
@@ -404,14 +511,50 @@ body {
 		margin-left:25px;
 	}
 
+	#sign-in button {
+ 	width:100px;
+	font-family:trebuchet ms;
+	height:22px;
+	font-size:15px;
+	margin-top:15px;
+	float:right;
+	margin-right:200px;
+}
+
+
+
+.fallingSnow {
+		margin-top:-165px;
+	}
+	#header-text {
+		
+		width:250px;
+		height:60px;
+		margin-top:28%;
+		margin-left:23%;
+	}
+
+
+	#header-text h1 {
+		font-size:25px;
+
+		
+	}
+
+	#header-text h4 {
+		font-size:12px;
+		margin-top:0px;
+	}
+
 	.grid {
 		
 		/*grid-template-columns: 1fr 1fr 1fr 1fr;*/
-		grid-template-rows: 100px 50px 250px 50px 450px 200px 50px;
+		grid-template-rows: 150px 50px 200px 250px 50px 500px 240px  50px;
 		grid-template-columns: 450px;
 		grid-template-areas:
 			"header"
 			"nav"
+			"intro"
 			"map"   
 			"srch"
 			"list"
@@ -426,7 +569,7 @@ body {
 
     width: 20px;
     height: 20px;
-    margin: -300px 60px 54px -34px;
+    margin: -50px 60px 54px -34px;
  
     background:url("images/snowflake.png");
  
