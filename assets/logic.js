@@ -1,5 +1,3 @@
-
-
 var config = {
           apiKey: "AIzaSyCGFZJ4_F1ujKk_g57Xc0npkyrComAgsMg",
           authDomain: "ski-resort-app.firebaseapp.com",
@@ -49,8 +47,6 @@ function submitClick(event) {
 
 	$("#submit").on("click", submitClick);
 
-// TODO-
-// Research how to share a firebase database
 
 
 $(function(){
