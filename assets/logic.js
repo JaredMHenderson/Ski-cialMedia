@@ -283,7 +283,7 @@ $('#northern-california-button').on("click", northernCaButtonClick)
 
     $(document).on('click', '.back-button', function () {
         if($(this).attr('data-place') === 'Colorado') {
-            coloradoButtonClick(getPlaces());
+            coloradoButtonClick();
         }
         else if ($(this).attr('data-place') === 'Utah') {
             utahButtonClick()
