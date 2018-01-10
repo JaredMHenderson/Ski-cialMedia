@@ -113,10 +113,10 @@ $(function(){
     
 
     // array of resorts that show up when each state Button is clicked
-    let coloradoResorts = ["Keystone", "Copper Mountain", "Loveland", "Monarch", "Arapahoe Basin", "Crested Butte", "Vail"];
-    let utahResorts = ["Beaver Mountain", "Brighton Ski Resort", "Dear Valley", "Sundance Resort", "Solitude Mountain"];
+    let coloradoResorts = ["Keystone", "Copper Mountain", "Loveland", "Monarch", "Winter Park", "Arapahoe Basin", "Crested Butte", "Vail"];
+    let utahResorts = ["Beaver Mountain", "Brighton Ski Resort", "Dear Valley", "Sundance Resort", "Solitude Mountain", "Powder Mountain", "Park City Mountain", "Wolf Mountain"];
     let centralCaResorts = ["Mammoth Mountain", "Badger Pass", "Dodge Ridge", "China Peak"];
-    let northernCaResorts = ["Bear Valley", "Boreal Mountain Resort", "Dodge Ridge", "Donner Ski Ranch", "Heavenly Mountain"];
+    let northernCaResorts = ["Bear Valley","Northstar California","Sugar Bowl Ski Resort", "Sugar Bowl", "Boreal Mountain Resort", "Dodge Ridge", "Donner Ski Ranch", "Heavenly Mountain"];
     let userButtons = [];
 
 
@@ -212,6 +212,8 @@ $('#central-california-button').on("click", centralCaButtonClick);
 
 $('#northern-california-button').on("click", northernCaButtonClick) 
 
+
+//Function for Back Button
 
     $(document).on('click', '.back-button', function () {
         if($(this).attr('data-place') === 'Colorado') {
