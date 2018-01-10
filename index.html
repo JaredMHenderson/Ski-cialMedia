@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-      
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    
-    <!-- jquery & our scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/logic.js">
-    
-    <link rel="icon" href="assets/images/favicon (1).ico">
 
-    <!--Link to firebase -->
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+
+  <!-- jquery & our scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="assets/logic.js">
+
+    <link rel="icon" href="assets/images/favicon (1).ico">
+      <!--Link to firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 
-    <!--Link to animate.css -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+  <!--Link to animate.css -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/style.css">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/style.css">
 
-    <!--Link to animate.css -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
-    <!-- or -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    
-
-    <!-- firebase -->
-    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
+  <!--Link to animate.css -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+  <!-- or -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
 
-    <title>Snow Scout</title>
+  <!-- firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
+
+
+  <title>Snow Scout</title>
+
+
 
   </head>
   <body>
@@ -141,30 +143,31 @@
               <div>
                 <a href="#">New England</a>
               </div> -->
-              
-            </div> <!-- dropdown -->
-          </li>
 
-         <li id="links">
-            <a>Links</a>
-            <div class="dropdown">
-              <div>
-                <a href="https://www.hotels.com/" target="_blank">Hotels.com</a>
-              </div>
-              <div>
-                <a href="https://www.airbnb.com/" target="_blank">airBnB.com</a>
-              </div>
-              <div>
-                <a href="https://www.liftopia.com/" target="_blank">Liftopedia</a>
-              </div>
+          </div>
+          <!-- dropdown -->
+        </li>
+
+        <li id="links">
+          <a>Links</a>
+          <div class="dropdown">
+            <div>
+              <a href="https://www.hotels.com/" target="_blank">Hotels.com</a>
             </div>
-          </li>
-          <!-- <div>
+            <div>
+              <a href="https://www.airbnb.com/" target="_blank">airBnB.com</a>
+            </div>
+            <div>
+              <a href="https://www.liftopia.com/" target="_blank">Liftopedia</a>
+            </div>
+          </div>
+        </li>
+        <!-- <div>
             <a id="links">Links</a>
           </div> -->
-                  <!-- </nav> -->
-          <!-- </div> --> 
-        </div>  
+        <!-- </nav> -->
+        <!-- </div> -->
+      </div>
 
 
     
@@ -177,13 +180,6 @@
           
 
           <button type="button" id="searchButton">Search</button>
-
-          
-
-          <!--<input type="text" id="searchContent">
-          <button id="submit">Submit</button>-->
-
-
 
         </div> <!-- search -->
         
@@ -216,7 +212,8 @@
         </form>
           
 
-        <!-- <div id="recent-searches">
+
+      <!-- <div id="recent-searches">
           <h2>Recently viewed</h2>
           <hr>
           <ul>
@@ -225,76 +222,34 @@
             <li>Breckenridge</li>
             <li>Keystone</li>
           </ul>
-        </div> --> <!-- recent-searches -->
+        </div> -->
+      <!-- recent-searches -->
       <!-- sidebar -->
 
-       <!-- XXXXXXXXXXXXXXXXXXXXXXXXXX MAIN CONTENT AREA XXXXXXXXXXXXXXXXXXXXXXXXXX -->
-        <!--  id="main-content-area" -->
-        <div id="map" class="animated fadeIn"> 
-        <div id="state-map"><video autoplay muted loop id="myVideo">
-            <source src="./assets/video/slowmovid.mp4" type="video/mp4">
-          </video></div>
-          <!--
-          
-          -->
-        </div>  <!-- map -->
+      <!-- XXXXXXXXXXXXXXXXXXXXXXXXXX MAIN CONTENT AREA XXXXXXXXXXXXXXXXXXXXXXXXXX -->
+      <!--  id="main-content-area" -->
+      <div id="map" class="animated fadeIn">
+        <video autoplay muted loop id="myVideo">
+          <source src="./assets/video/Snow Scout Loop.mp4" type="video/mp4">
+        </video>
+        <div id="state-map"> 
+        </div>
+      </div>
+      <!-- map -->
 
-        <div id="list"> 
-          <h2 style="padding-left:20px;"> Winter Park Resort </h2> <hr>
-          <table style="width: 150px; height: 252px; padding-left: 20px;">
-              <tbody>
-              <tr style="height: 23px;">
-              <td style="height: 23px; width: 159px;">Temperature</td>
-              <td style="height: 23px; width: 184px;">XX</td>
-              </tr>
-              <tr style="height: 23px;">
-              <td style="height: 23px; width: 159px;">Wind</td>
-              <td style="height: 23px; width: 184px;">XX</td>
-              </tr>
-              <tr style="height: 23px;">
-              <td style="height: 23px; width: 159px;">Snow&nbsp;</td>
-              <td style="height: 23px; width: 184px;">XX</td>
-              </tr>
-              <tr style="height: 23px;">
-              <td style="height: 23px; width: 159px;">Recent snowfall</td>
-              <td style="height: 23px; width: 184px;">XX</td>
-              </tr>
-              <tr style="height: 23px;">
-              <td style="height: 23px; width: 159px;">Open trails</td>
-              <td style="height: 23px; width: 184px;">XX</td>
-              </tr>
-              <tr style="height: 23px;">
-              <td style="height: 23px; width: 159px;">Open lifts</td>
-              <td style="height: 23px; width: 184px;">XX</td>
-              </tr>
-              <tr style="height: 23px;">
-              <td style="height: 23px; width: 159px;">Base depth</td>
-              <td style="height: 23px; width: 184px;">XX</td>
-              </tr>
-              <tr style="height: 23px;">
-              <td style="height: 23px; width: 159px;">Summit depth</td>
-              <td style="height: 23px; width: 184px;">XX</td>
-              </tr>
-              <tr style="height: 23px;">
-              <td style="height: 23px; width: 159px;">Last snowfall</td>
-              <td style="height: 23px; width: 184px;">XX</td>
-              </tr>
-              <tr style="height: 23px;">
-              <td style="height: 23px; width: 159px;">&nbsp;</td>
-              <td style="height: 23px; width: 184px;">&nbsp;</td>
-              </tr>
-              </tbody>
-              </table>
-              <p>&nbsp;</p>
-        </div> <!-- list -->
+      <div id="list"">
+        
+      </div>
+      <!-- list -->
 
-        <footer id="footer"> &copy; 2017 Copyright Ski-cial Media
-        </footer>
+      <footer id="footer"> &copy; 2017 Copyright Ski-cial Media
+      </footer>
 
-      </div> <!-- end of grid-- >
-          <!-- </div> main-content-area -->
     </div>
-    <script>
+    <!-- end of grid-- >
+          <!-- </div> main-content-area -->
+  </div>
+  <script>
        /* this function must be created before the API is loaded (otherwise callback is lost) */
       // function myMap() {
       //   var mapProp = {
@@ -303,23 +258,17 @@
       //   };
       //   var map = new google.maps.Map(document.getElementById("map"),mapProp);
       // }
-    </script>
-    <script src="assets/logic.js"> </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzxrQ1LvZFppwAKMvIF3Yom_r--aECrM&libraries=places&callback=mapsInitialized"></script>
+  </script>
+  <script src="assets/logic.js"> </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzxrQ1LvZFppwAKMvIF3Yom_r--aECrM&libraries=places&callback=mapsInitialized"></script>
 
 
-    
- 
-       
-    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-  </body>
+
+
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</body>
+
 </html>
-
-
-
-
-
-
-
