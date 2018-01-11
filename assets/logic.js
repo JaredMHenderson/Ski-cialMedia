@@ -30,10 +30,6 @@ var config = {
 var firebaseRef = firebase.database();
 
 
-       
-        
-        
-
 function validation(name, email) {
 	if(name === '') {
 		return false;
@@ -209,14 +205,8 @@ $(function(){
 //on click function for colorado button
 function coloradoButtonClick () {
     $('#myVideo').remove();
-<<<<<<< HEAD
 
-
-    $("#list").empty().removeClass('centralCaBgImage northernCaBgImage utahBgImage weatherText searchBgImage').addClass('coloradoBgImage').append(`<h1 class="animated fadeIn">Colorado Resorts</h1>`);
-=======
     $("#list").empty().removeClass('list_background centralCaBgImage northernCaBgImage utahBgImage weatherText searchBgImage').addClass('coloradoBgImage').append(`<h1 class="animated fadeIn">Colorado Resorts</h1>`);
->>>>>>> NW_branch
-
     // creates a button for each resort in the array and gives it a unique id with the name of the resort
 
     for (var i = 0; i < coloradoResorts.length; i++) {
