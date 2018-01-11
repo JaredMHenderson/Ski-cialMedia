@@ -206,7 +206,7 @@ function coloradoButtonClick () {
     for (var i = 0; i < coloradoResorts.length; i++) {
 
         $("#list").append(`<div><button class="animated fadeInUp resort-buttons" data-state="Colorado" 
-            data-name='${coloradoResorts[i].name}'>${coloradoResorts[i].name}</button><div>`);
+            data-name='${coloradoResorts[i]}'>${coloradoResorts[i]}</button><div>`);
     };
 
     
