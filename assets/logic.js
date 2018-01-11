@@ -1,3 +1,7 @@
+let keystone = {
+    name: "Keystone",
+    id: "keystone"
+};
 var mapElement;
 var map;
 var markerArray=[];
@@ -181,7 +185,7 @@ $(function(){
     
 
     // array of resorts that show up when each state Button is clicked
-    let coloradoResorts = ["Keystone", "Copper Mountain", "Loveland", "Monarch", "Arapahoe Basin", "Crested Butte", "Vail"];
+    let coloradoResorts = [{keystone}, "Copper Mountain", "Loveland", "Monarch", "Arapahoe Basin", "Crested Butte", "Vail"];
     let utahResorts = ["Beaver Mountain", "Brighton Ski Resort", "Dear Valley", "Sundance Resort", "Solitude Mountain"];
     let centralCaResorts = ["Mammoth Mountain", "Badger Pass", "Dodge Ridge", "China Peak"];
     let northernCaResorts = ["Bear Valley", "Boreal Mountain Resort", "Dodge Ridge", "Donner Ski Ranch", "Heavenly Mountain"];
@@ -198,7 +202,7 @@ function coloradoButtonClick () {
     for (var i = 0; i < coloradoResorts.length; i++) {
 
         $("#list").append(`<div><button class="animated fadeInUp resort-buttons" data-state="Colorado" 
-            data-name='${coloradoResorts[i]}'>${coloradoResorts[i]}</button><div>`);
+            data-name='${coloradoResorts[i].name}'>${coloradoResorts[i].name}</button><div>`);
     };
 
     
@@ -320,7 +324,7 @@ $(document).on('click', '.resort-buttons', function(){
 
         let queryURLGeo = "https://maps.googleapis.com/maps/api/geocode/json?address="+ place + state + "&key=" + apiKeyGeo;
 
-        let apiLiftieURL = "https://cors-anywhere.herokuapp.com/https://liftie.info/api/resort/breck";
+        let apiLiftieURL = "https://cors-anywhere.herokuapp.com/https://liftie.info/api/resort/"+ coloradoResorts[i].id;
 
             $.ajax({
 
