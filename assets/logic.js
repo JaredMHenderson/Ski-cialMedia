@@ -6,7 +6,7 @@ var placesSearch;
 var mapsInitialized = () =>
 {
     map = new google.maps.Map(document.getElementById('state-map'),
-        {zoom: 6,
+        {zoom: 7,
             center: { lat: 39.7392, lng: -104.9903}
         });
     placesSearch = new google.maps.places.PlacesService(map);
@@ -91,10 +91,17 @@ $(function(){
         });
     }
 
+    function capitalizeWords(str)
+    {
+
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+
+    }
+
 
     function submitButtonClick(){
         let searchedPlace = $('#searchBox').val();
-        $("#list").empty().removeClass('centralCaBgImage northernCaBgImage utahBgImage weatherText').addClass("searchBgImage").append(`<h1 class="animated fadeIn">${searchedPlace}</h1>`)
+        $("#list").empty().removeClass('centralCaBgImage northernCaBgImage utahBgImage weatherText').addClass("searchBgImage").append(`<h1 class="animated fadeIn">${searchedPlace}<br>Weather Info</h1>`)
     
         $('#map').html(`<iframe 
             width="100%" 
@@ -104,8 +111,69 @@ $(function(){
             src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=${searchedPlace}&zoom=7" allowfullscreen>
             </iframe>`);
 
-        $('#searchBox').val("");
-    
+        let weatherAPI = () => {
+
+            let apiKeyGeo = "AIzaSyC_AXkLRiDbkJwyfbAFjyV_F5FeavMdqOs";
+
+            let queryURLGeo = "https://maps.googleapis.com/maps/api/geocode/json?address="+ searchedPlace + "&key=" + apiKeyGeo;
+
+                $.ajax({
+
+                    url: queryURLGeo,
+
+                    type: "GET"
+
+                }).done(response => {
+
+                        let lattitude = response.results[0].geometry.location.lat;
+
+                        let longitude = response.results[0].geometry.location.lng;
+
+                        console.log(lattitude, longitude);
+
+                        let apiKeyWeather = "&APPID=5177a7e3f7a42cff3fe728e088dd8b0d";
+
+                        let queryURLWeather = "https://api.openweathermap.org/data/2.5/weather?lat="+ lattitude + "&" + "lon="+ longitude + apiKeyWeather + "&units=imperial";
+
+                            $.ajax({
+
+                                url: queryURLWeather,
+
+                                type: "GET"
+
+                             }).done(response => {
+
+                                console.log(queryURLWeather);
+
+                                let currentTemp = response.main.temp;
+
+                                let currentWind = response.wind.speed;
+
+                                let icon = response.weather[0].icon
+
+                                let iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
+
+                                let weatherDiscrption = capitalizeWords(response.weather[0].description);
+
+                                let sunriseTime = new Date(response.sys.sunrise *1000);
+
+                                let sunsetTime = new Date(response.sys.sunset *1000);
+
+                                $("#list").append(`<h3 class='animated fadeIn weatherText desc'>${weatherDiscrption}<br><img class='animated fadeIn weatherIcon' src= ${iconURL} alt= ${weatherDiscrption}></img></h3>`);
+                                $("#list").append(`<h3 class='animated fadeIn weatherText'>Current Temp: ${Math.floor(currentTemp)}°F</h3>`);
+                                $("#list").append(`<h3 class='animated fadeIn weatherText'>Current Wind Speed: ${Math.floor(currentWind)}MPH</h3>`);
+                                $("#list").append(`<h3 class='animated fadeIn weatherText'>Sunrise:<br>${sunriseTime.toLocaleString()} (MST)</h3>`);
+                                $("#list").append(`<h3 class='animated fadeIn weatherText'>Sunset:<br>${sunsetTime.toLocaleString()} (MST)</h3>`);
+
+
+                            });
+
+                });
+
+            };
+
+            weatherAPI();
+            $('#searchBox').val("");
     
     };
 
@@ -122,6 +190,7 @@ $(function(){
 
 //on click function for colorado button
 function coloradoButtonClick () {
+    $('#myVideo').remove();
     $("#list").empty().removeClass('centralCaBgImage northernCaBgImage utahBgImage weatherText searchBgImage').addClass('coloradoBgImage').append(`<h1 class="animated fadeIn">Colorado Resorts</h1>`);
 
     // creates a button for each resort in the array and gives it a unique id with the name of the resort
@@ -132,6 +201,7 @@ function coloradoButtonClick () {
             data-name='${coloradoResorts[i]}'>${coloradoResorts[i]}</button><div>`);
     };
 
+    
     // adds the map of resorts
 
     getPlaces(0, coloradoResorts);
@@ -144,6 +214,7 @@ function coloradoButtonClick () {
 
 //on click function for utah button
     function utahButtonClick() {
+        $('#myVideo').remove();
         $("#list").empty().removeClass('coloradoBgImage centralCaBgImage northernCaBgImage weatherText searchBgImage').addClass('utahBgImage').append(`<h1 class="animated fadeIn">Utah Resorts</h1>`);
 
         for (var i = 0; i < utahResorts.length; i++) {
@@ -165,7 +236,7 @@ function coloradoButtonClick () {
 
 //on click function for central CA button
     function centralCaButtonClick(){
-
+        $('#myVideo').remove();
         $("#list").empty().removeClass('coloradoBgImage utahCaBgImage northernCaBgImage weatherText searchBgImage').addClass('centralCaBgImage').append(`<h1 class="animated fadeIn">Central California Resorts</h1>`);
 
         for (var i = 0; i < centralCaResorts.length; i++) {
@@ -189,6 +260,7 @@ $('#central-california-button').on("click", centralCaButtonClick);
     //on click function for northern CA button
     
     function northernCaButtonClick(){
+        $('#myVideo').remove();
         $("#list").empty().removeClass('coloradoBgImage utahCaBgImage centralCaBgImage weatherText searchBgImage').addClass('northernCaBgImage').append(`<h1 class="animated fadeIn">Northern California Resorts</h1>`);
         for (var i = 0; i < northernCaResorts.length; i++) {
 
@@ -223,209 +295,105 @@ $('#northern-california-button').on("click", northernCaButtonClick)
             northernCaButtonClick()
         }
 
-        else if($(this).attr('data-place') === 'null') {
-            renderButtons()
-        }
-
-        $('#list').removeClass('weatherText');
-
     });
 
-/*
-    function renderButtons() {
+$(document).on('click', '.resort-buttons', function(){ 
 
-        $("#list").empty();
-        $("#list").append('<h1 class="animated fadeIn weatherText">User Defined Areas</h1>');
+    //place and state are unique for each button
+    let place = $(this).attr('data-name');
+    let state = $(this).attr('data-state');
 
- 
-        for (let i = 0; i < userButtons.length; i++) {
+    $('#list').empty();
 
-            let userButton = $("<button>");
-            userButton.addClass('class="animated fadeInUp resort-buttons');
-            userButton.attr("data-name", userButtons[i]);
-            userButton.text(userButtons[i]);
-            $("#list").append(userButton);
-        }
-    }
-
-$('#userDefined').on("click", renderButtons);
-
-     $("#submit").on("click", function (event) {
-
-        let newButton = $("#searchContent").val().trim()
-
-        userButtons.push(newButton);
-
-        renderButtons();
-
-        $('input[type="text"], textarea').val('');
-    });
-*/
-
-    $(document).on('click', '.resort-buttons', function(){ 
-
-        //place and state are unique for each button
-        let place = $(this).attr('data-name');
-        let state = $(this).attr('data-state');
-
-        $('#list').empty();
-
-        if (state != null) {
-
-        $('#map').html(`<iframe 
-            width="100%" 
-            height="100%" 
-            frameborder="0" 
-            style="border:0" 
-            src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=${place}+${state}&zoom=7" allowfullscreen>
-            </iframe>`);
+    $('#map').html(`<iframe 
+        class="resort-map";
+        width="100%" 
+        height="100%" 
+        frameborder="0" 
+        style="border:0" 
+        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=${place}+${state}&zoom=7" allowfullscreen>
+        </iframe>`);
                     
-        let weatherAPI = () => {
+    let weatherAPI = () => {
 
-            let apiKeyGeo = "AIzaSyC_AXkLRiDbkJwyfbAFjyV_F5FeavMdqOs";
+        let apiKeyGeo = "AIzaSyC_AXkLRiDbkJwyfbAFjyV_F5FeavMdqOs";
 
-            let queryURLGeo = "https://maps.googleapis.com/maps/api/geocode/json?address="+ place + state + "&key=" + apiKeyGeo;
+        let queryURLGeo = "https://maps.googleapis.com/maps/api/geocode/json?address="+ place + state + "&key=" + apiKeyGeo;
 
-                $.ajax({
+        let apiLiftieURL = "https://cors-anywhere.herokuapp.com/https://liftie.info/api/resort/breck";
 
-                    url: queryURLGeo,
+            $.ajax({
 
-                    type: "GET"
+                url: apiLiftieURL,
 
-                }).done(response => {
+                type: "GET"
 
-                        console.log(queryURLGeo);
+                    }).done(response => {
 
-                        let lattitude = response.results[0].geometry.location.lat;
+                    console.log(response);
 
-                        let longitude = response.results[0].geometry.location.lng;
+                    });
 
-                        let apiKeyWeather = "&APPID=5177a7e3f7a42cff3fe728e088dd8b0d";
+            $.ajax({
 
-                        let queryURLWeather = "https://api.openweathermap.org/data/2.5/weather?lat="+ lattitude + "&" + "lon="+ longitude + apiKeyWeather + "&units=imperial";
+                url: queryURLGeo,
 
-                            $.ajax({
+                type: "GET"
 
-                                url: queryURLWeather,
+                    }).done(response => {
 
-                                type: "GET"
+                    console.log(queryURLGeo);
 
-                             }).done(response => {
+                    let lattitude = response.results[0].geometry.location.lat;
 
-                        console.log(queryURLWeather);
+                    let longitude = response.results[0].geometry.location.lng;
 
-                        let currentTemp = response.main.temp;
+                    let apiKeyWeather = "&APPID=5177a7e3f7a42cff3fe728e088dd8b0d";
 
-                        let currentWind = response.wind.speed;
+                    let queryURLWeather = "https://api.openweathermap.org/data/2.5/weather?lat="+ lattitude + "&" + "lon="+ longitude + apiKeyWeather + "&units=imperial";
 
-                        let icon = response.weather[0].icon
+                    $.ajax({
 
-                        let iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
+                        url: queryURLWeather,
 
-                        let weatherDiscrption = response.weather[0].description;
+                        type: "GET"
 
-                        let sunriseTime = new Date(response.sys.sunrise *1000);
+                            }).done(response => {
 
-                        let sunsetTime = new Date(response.sys.sunset *1000);
+                                console.log(queryURLWeather);
 
-                        $("#list").append(`<input type='button' class='back-button' style='float: left;' data-place='${state}' value=Back /><h1 class='animated fadeIn'>${place}<br>Weather Info</h1>`);
-                        $("#list").append(`<img class='animated fadeIn weatherIcon' src= ${iconURL} alt= ${icon.description}></img> <br>
-                                            <h3 class='animated fadeIn'>${weatherDiscrption}</h3>`).addClass('weatherText');;
-                        $("#list").append(`<h3 class='animated fadeIn'>Current Temp: ${Math.floor(currentTemp)}°F</h3>`);
-                        $("#list").append(`<h3 class='animated fadeIn'>Current Wind Speed: ${Math.floor(currentWind)}MPH</h3>`);
-                        $("#list").append(`<h3 class='animated fadeIn'>Sunrise:<br>${sunriseTime.toLocaleString()} (MST)</h3>`);
-                        $("#list").append(`<h3 class='animated fadeIn'>Sunset:<br>${sunsetTime.toLocaleString()} (MST)</h3>`);
+                                let currentTemp = response.main.temp;
 
+                                let currentWind = response.wind.speed;
 
-                });
+                                let icon = response.weather[0].icon
 
-                });
+                                let iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
 
-            };
+                                let weatherDiscrption = capitalizeWords(response.weather[0].description);
 
-            weatherAPI();
+                                let sunriseTime = new Date(response.sys.sunrise *1000);
 
-        }
+                                let sunsetTime = new Date(response.sys.sunset *1000);
 
-        else {
+                                $("#list").append(`<input type='button' class='back-button' style="" data-place='${state}' value=Back /><h1 class='animated fadeIn'>${place}<br>Weather Info</h1>`);
 
-            let weatherAPI = () => {
+                                $("#list").append(`<h3 class='animated fadeIn weatherText desc'>${weatherDiscrption}<br>
+                                                   <img class='animated fadeIn weatherIcon' src= ${iconURL} alt= ${weatherDiscrption}></img></h3>`);
 
-            $('#map').html(`<iframe 
-                width="100%" 
-                height="100%" 
-                frameborder="0" 
-                style="border:0" 
-                src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=${place}&zoom=7" allowfullscreen>
-                </iframe>`);
-
-            let apiKeyGeo = "AIzaSyC_AXkLRiDbkJwyfbAFjyV_F5FeavMdqOs";
-
-            let queryURLGeo = "https://maps.googleapis.com/maps/api/geocode/json?address="+ place + "&key=" + apiKeyGeo;
-
-                $.ajax({
-
-                    url: queryURLGeo,
-
-                    type: "GET"
-
-                }).done(response => {
-
-                        let lattitude = response.results[0].geometry.location.lat;
-
-                        let longitude = response.results[0].geometry.location.lng;
-
-                        console.log(lattitude, longitude);
-
-                        let apiKeyWeather = "&APPID=5177a7e3f7a42cff3fe728e088dd8b0d";
-
-                        let queryURLWeather = "https://api.openweathermap.org/data/2.5/weather?lat="+ lattitude + "&" + "lon="+ longitude + apiKeyWeather + "&units=imperial";
-
-                            $.ajax({
-
-                                url: queryURLWeather,
-
-                                type: "GET"
-
-                             }).done(response => {
-
-                        console.log(queryURLWeather);
-
-                        let currentTemp = response.main.temp;
-
-                        let currentWind = response.wind.speed;
-
-                        let icon = response.weather[0].icon
-
-                        let iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
-
-                        let weatherDiscrption = response.weather[0].description;
-
-                        let sunriseTime = new Date(response.sys.sunrise *1000);
-
-                        let sunsetTime = new Date(response.sys.sunset *1000);
-
-                        $("#list").append(`<input type='button' class='back-button' style='float: left;' data-place='null' value=Back /><h1 class='animated fadeIn'>${place}<br>Weather Info</h1>`);
-                        $("#list").append(`<img class='animated fadeIn weatherIcon' src= ${iconURL} alt= ${icon.description}></img> <br>
-                                            <h3 class='animated fadeIn'>${weatherDiscrption}</h3>`).addClass('weatherText');;
-                        $("#list").append(`<h3 class='animated fadeIn'>Current Temp: ${Math.floor(currentTemp)}°F</h3>`);
-                        $("#list").append(`<h3 class='animated fadeIn'>Current Wind Speed: ${Math.floor(currentWind)}MPH</h3>`);
-                        $("#list").append(`<h3 class='animated fadeIn'>Sunrise:<br>${sunriseTime.toLocaleString()} (MST)</h3>`);
-                        $("#list").append(`<h3 class='animated fadeIn'>Sunset:<br>${sunsetTime.toLocaleString()} (MST)</h3>`);
+                                $("#list").append(`<h3 class='animated fadeIn weatherText'>Current Temp: ${Math.floor(currentTemp)}°F</h3>`);
+                                $("#list").append(`<h3 class='animated fadeIn weatherText'>Current Wind Speed: ${Math.floor(currentWind)}MPH</h3>`);
+                                $("#list").append(`<h3 class='animated fadeIn weatherText'>Sunrise:<br>${sunriseTime.toLocaleString()} (MST)</h3>`);
+                                $("#list").append(`<h3 class='animated fadeIn weatherText'>Sunset:<br>${sunsetTime.toLocaleString()} (MST)</h3>`);
 
 
-                });
+                            });
 
                 });
 
             };
 
             weatherAPI();
-
-        }
+});
     
-    });
-
-    
-
 });
