@@ -1,8 +1,11 @@
+//variables for google maps
+
 var mapElement;
 var map;
 var markerArray=[];
 var placesSearch;
 
+//function to initialize the google map
 var mapsInitialized = () =>
 {
     map = new google.maps.Map(document.getElementById('state-map'),
@@ -12,6 +15,7 @@ var mapsInitialized = () =>
     placesSearch = new google.maps.places.PlacesService(map);
 }
 
+//iniitalizing firebase data base
 var config = {
           apiKey: "AIzaSyCGFZJ4_F1ujKk_g57Xc0npkyrComAgsMg",
           authDomain: "ski-resort-app.firebaseapp.com",
@@ -23,6 +27,7 @@ var config = {
         firebase.initializeApp(config);
 
 var firebaseRef = firebase.database();
+
 
        
         
@@ -67,8 +72,46 @@ function submitClick(event) {
 	$("#submit").on("click", submitClick);
 
 
-
 $(function(){
+
+    // submit user input and push to firebase
+    function submitClick(event) {
+        event.preventDefault();
+        const name = $('#name_input').val().trim();
+        const email = $('#email_input').val().trim();
+        if (validation(name, email)) {
+            var ref = firebaseRef.ref('users');
+
+            var data = {
+                name,
+                email
+            };
+            ref.push(data);
+            $('#name_input').val("");
+            $('#email_input').val("");
+            $("#alert").text("")
+
+        }
+        else {
+            $("#alert").text("Please enter a valid name and email.")
+        }
+
+    };
+
+
+    //user input validation
+    function validation(name, email) {
+        if (name === '') {
+            return false;
+        }
+        if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+            return false;
+        }
+        return true;
+
+    };	
+
+    $("#submit").on("click", submitClick);
 
     // use enter key to submit search //
     // $("#searchButton").keyup(function(e){  
@@ -92,7 +135,10 @@ $(function(){
             {
                 markerArray.push(new google.maps.Marker({
                     position: placesResult[0].geometry.location,
-                    map: map
+                    map: map,
+                    clickable: true,
+                    title: "Click for more details"
+                    
                 }));
             }
 
@@ -194,10 +240,10 @@ $(function(){
     
 
     // array of resorts that show up when each state Button is clicked
-    let coloradoResorts = ["Keystone", "Copper Mountain", "Loveland", "Monarch", "Arapahoe Basin", "Crested Butte", "Vail"];
-    let utahResorts = ["Beaver Mountain", "Brighton Ski Resort", "Dear Valley", "Sundance Resort", "Solitude Mountain"];
+    let coloradoResorts = ["Keystone", "Copper Mountain", "Loveland", "Monarch", "Winter Park", "Arapahoe Basin", "Crested Butte", "Vail"];
+    let utahResorts = ["Beaver Mountain", "Brighton Ski Resort", "Dear Valley", "Sundance Resort", "Solitude Mountain", "Powder Mountain", "Park City Mountain", "Wolf Mountain"];
     let centralCaResorts = ["Mammoth Mountain", "Badger Pass", "Dodge Ridge", "China Peak"];
-    let northernCaResorts = ["Bear Valley", "Boreal Mountain Resort", "Dodge Ridge", "Donner Ski Ranch", "Heavenly Mountain"];
+    let northernCaResorts = ["Bear Valley","Northstar California","Sugar Bowl Ski Resort", "Sugar Bowl", "Boreal Mountain Resort", "Dodge Ridge", "Donner Ski Ranch", "Heavenly Mountain"];
     let userButtons = [];
 
 
@@ -293,6 +339,8 @@ $('#central-california-button').on("click", centralCaButtonClick);
 
 $('#northern-california-button').on("click", northernCaButtonClick) 
 
+
+//Function for Back Button
 
     $(document).on('click', '.back-button', function () {
         if($(this).attr('data-place') === 'Colorado') {
