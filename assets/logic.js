@@ -70,6 +70,8 @@ $(function(){
 
     $("#submit").on("click", submitClick);
 
+    //Adds markers to map for state results
+
     function getPlaces(index, placesArray)
     {
         placesSearch.textSearch({query: placesArray[index]}, function (placesResult)
@@ -99,6 +101,32 @@ $(function(){
         });
     }
 
+    //adds marker to map when resort button is clicked
+
+    function getResort(resort) {
+      placesSearch.textSearch({ query: resort}, function(
+        placesResult
+      ) {
+         
+          markerArray.forEach(marker => {
+            marker.setMap(null);
+          });
+          map.setCenter(placesResult[0].geometry.location);
+        
+        if (placesResult && placesResult[0]) {
+          markerArray.push(
+            new google.maps.Marker({
+              position: placesResult[0].geometry.location,
+              map: map,
+              clickable: true,
+              title: "Click for more details"
+            })
+          );
+        }
+
+        
+      });
+    }
 
     function capitalizeWords(str)
     {
@@ -194,7 +222,7 @@ $(function(){
     // array of resorts that show up when each state Button is clicked
 
     let coloradoResorts = ["Keystone", "Copper Mountain", "Loveland", "Winter Park", "Crested Butte", "Vail"];
-    let utahResorts = ["Beaver Mountain", "Brighton Ski Resort", "Dear Valley", "Sundance Resort", "Solitude Mountain", "Powder Mountain"];
+    let utahResorts = ["Beaver Mountain", "Brighton Ski Resort", "Dear Valley", "Solitude Mountain", "Powder Mountain"];
     let centralCaResorts = ["Mammoth Mountain", "Badger Pass", "Dodge Ridge", "China Peak"];
     let northernCaResorts = ["Bear Valley","Northstar California","Sugar Bowl Ski Resort", "Sugar Bowl", "Boreal Mountain Resort", "Dodge Ridge"];
 
@@ -217,9 +245,7 @@ function coloradoButtonClick () {
 
     getPlaces(0, coloradoResorts);
 
-    setTimeout(() => {
-        $('iframe').addClass('animated fadeIn');
-    }, 1000);
+    
 };
     $('#colorado-button').on("click", coloradoButtonClick);
 
@@ -315,14 +341,16 @@ $(document).on('click', '.resort-buttons', function(){
 
     $('#list').empty();
 
-    $('#map').html(`<iframe 
-        class="resort-map";
-        width="100%" 
-        height="100%" 
-        frameborder="0" 
-        style="border:0" 
-        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=${place}+${state}&zoom=7" allowfullscreen>
-        </iframe>`);
+    // $('#map').html(`<iframe 
+    //     class="resort-map";
+    //     width="100%" 
+    //     height="100%" 
+    //     frameborder="0" 
+    //     style="border:0" 
+    //     src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDbyddmrqW7wONDFRt9o54qgXBEcc7lMf8&q=${place}+${state}&zoom=7" allowfullscreen>
+    //     </iframe>`);
+
+    getResort(place);
                     
     let weatherAPI = () => {
 
