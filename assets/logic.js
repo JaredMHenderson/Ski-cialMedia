@@ -101,6 +101,10 @@ $(function(){
                     infoWindow.open(map);
                                                   });
 
+                marker.addListener("mouseout", () => {
+                  infoWindow.close();
+                });
+
               markerArray.push(marker);
             }
 
@@ -124,15 +128,25 @@ $(function(){
           map.setCenter(placesResult[0].geometry.location);
         
         if (placesResult && placesResult[0]) {
-          markerArray.push(
-            new google.maps.Marker({
-              position: placesResult[0].geometry.location,
-              map: map,
-              clickable: true,
-              title: "Click for more details"
+          let marker = new google.maps.Marker({
+                  position: placesResult[0].geometry.location,
+                  map: map,
+                  clickable: true
             })
-          );
-        }
+             marker.addListener("click", () => {
+               infoWindow.setContent(JSON.stringify(placesResult[0].formatted_address));
+               console.log(placesResult[0].formatted_address);
+               infoWindow.setPosition(placesResult[0].geometry.location);
+               infoWindow.open(map);
+             });
+             marker.addListener("mouseout", () => {
+               infoWindow.close();
+             });
+               
+        };
+        
+
+       
 
         
       });
