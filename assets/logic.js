@@ -99,6 +99,7 @@ $(function(){
         });
     }
 
+
     function capitalizeWords(str)
     {
 
@@ -106,8 +107,10 @@ $(function(){
 
     }
 
+// Loads maps and weather for user search
 
     function submitButtonClick(){
+        
         let searchedPlace = $('#searchBox').val();
         $("#list").empty().removeClass('centralCaBgImage northernCaBgImage utahBgImage weatherText').addClass("searchBgImage").append(`<h1 class="animated fadeIn">${searchedPlace}<br>Weather Info</h1>`)
     
@@ -190,10 +193,10 @@ $(function(){
 
     // array of resorts that show up when each state Button is clicked
 
-    let coloradoResorts = ["Keystone", "Copper Mountain", "Loveland", "Monarch", "Winter Park", "Arapahoe Basin", "Crested Butte", "Vail"];
-    let utahResorts = ["Beaver Mountain", "Brighton Ski Resort", "Dear Valley", "Sundance Resort", "Solitude Mountain", "Powder Mountain", "Park City Mountain", "Wolf Mountain"];
+    let coloradoResorts = ["Keystone", "Copper Mountain", "Loveland", "Winter Park", "Crested Butte", "Vail"];
+    let utahResorts = ["Beaver Mountain", "Brighton Ski Resort", "Dear Valley", "Sundance Resort", "Solitude Mountain", "Powder Mountain"];
     let centralCaResorts = ["Mammoth Mountain", "Badger Pass", "Dodge Ridge", "China Peak"];
-    let northernCaResorts = ["Bear Valley","Northstar California","Sugar Bowl Ski Resort", "Sugar Bowl", "Boreal Mountain Resort", "Dodge Ridge", "Donner Ski Ranch", "Heavenly Mountain"];
+    let northernCaResorts = ["Bear Valley","Northstar California","Sugar Bowl Ski Resort", "Sugar Bowl", "Boreal Mountain Resort", "Dodge Ridge"];
 
 
 //on click function for colorado button
@@ -235,9 +238,7 @@ function coloradoButtonClick () {
 
         getPlaces(0, utahResorts);
 
-        setTimeout(() => {
-            $('iframe').addClass('animated fadeIn');
-        }, 1000);
+        
         
     };
     $('#utah-button').on("click", utahButtonClick);
@@ -257,9 +258,7 @@ function coloradoButtonClick () {
 
         getPlaces(0, centralCaResorts);
 
-        setTimeout(() => {
-            $('iframe').addClass('animated fadeIn');
-        }, 1000);
+        
 
     };
 $('#central-california-button').on("click", centralCaButtonClick);
@@ -280,9 +279,7 @@ $('#central-california-button').on("click", centralCaButtonClick);
 
         getPlaces(0, northernCaResorts);
 
-        setTimeout(() => {
-            $('iframe').addClass('animated fadeIn');
-        }, 1000);
+        
 
     }
 
@@ -306,6 +303,9 @@ $('#northern-california-button').on("click", northernCaButtonClick)
         }
 
     });
+
+
+//Onclick funtion for resort buttons, opens map and accesses weather and liftie api
 
 $(document).on('click', '.resort-buttons', function(){ 
 
