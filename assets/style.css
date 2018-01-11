@@ -18,8 +18,9 @@ body {
 }
 
 .grid {
+	
 	display:grid;
-
+	grid-gap:.5rem;
 	grid-template-rows: 200px 50px 250px 250px 50px;
 	grid-template-columns: 275px 275px 275px 300px;		
 	grid-template-areas:
@@ -28,8 +29,7 @@ body {
 		'map    map    list   intro '
 		'map    map    list   login '
 		'ftr    ftr    ftr    ftr';
-
-	grid-gap:.5rem;
+	
 }
 
 #image {
@@ -104,11 +104,14 @@ body {
 	font-size:15px;
 	color:white;
 	margin-left:10px;
+	margin-right:10px;
 }
 
 #intro hr {
 	background-color:#2b2b2b;
 }
+
+
 
 #list h1{
 	font-family: trebuchet ms;
@@ -126,6 +129,17 @@ body {
 	font-size:15px;
 	background-color: #2b2b2b;
 	color:white;
+}
+
+#list .back-button {
+	width:60px;
+	font-family:trebuchet ms;
+	height:25px;
+	font-size:15px;
+	background-color: #2b2b2b;
+	color:white;
+	margin:7px;
+	margin-bottom:0px;
 }
 
 #list h3 {
@@ -201,6 +215,17 @@ body {
 }
 
 /* class to add image behind list of resort buttons */
+
+.list_background {
+	background-image: url(./images/blackandwhite.jpg);
+	background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    opacity:.8;
+}
+
 .coloradoBgImage {
 	background-image: url(./images/jorg-angeli-406235.jpg);
 	background-repeat: no-repeat;
@@ -442,6 +467,7 @@ body {
 		/*grid-template-columns:1fr 1fr;*/
 		grid-template-rows: 200px 50px 250px 500px 50px;
 		grid-template-columns: 300px 300px 300px;
+
 		grid-template-areas:
 			"header  header  header"
 			"nav      nav    srch"
@@ -465,6 +491,11 @@ body {
 		margin-top:-35px;
 	}
 
+	#header-text h4 {
+		font-size:16px;
+		margin-top:-5px;
+	}
+
 	#home {
 		margin-left:10px;
 	}
@@ -482,11 +513,12 @@ body {
 		
 		grid-template-rows: 200px 50px 250px 500px 50px;
 		grid-template-columns: 400px 300px;
+
 		grid-template-areas:
 			"header    header"
-			"nav       srch   "
-			"map       intro   "   
-			"list      login  "
+			"nav       srch"
+			"map       intro"   
+			"list      login"
 			"ftr       ftr";
 	}
 }
@@ -534,14 +566,36 @@ body {
 
 
 	#header-text h1 {
-		font-size:25px;
+		font-size:40px;
+		padding:5px;
 
 		
 	}
 
 	#header-text h4 {
-		font-size:12px;
-		margin-top:0px;
+		display:none;
+	}
+
+	#intro h2 {
+		font-size:23px;
+		text-align:center;
+	}
+
+
+
+	#sign-in h2 {
+		text-align:center;
+	}
+
+	#sign-in label {
+		margin-left:80px;
+	}
+	#sign-in button {
+		margin-right:80px;
+	}
+
+	#alert {
+		margin-left:85px;
 	}
 
 	.grid {
@@ -549,6 +603,7 @@ body {
 		/*grid-template-columns: 1fr 1fr 1fr 1fr;*/
 		grid-template-rows: 150px 50px 200px 250px 50px 500px 240px  50px;
 		grid-template-columns: 450px;
+		
 		grid-template-areas:
 			"header"
 			"nav"
