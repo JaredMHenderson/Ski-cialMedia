@@ -330,7 +330,7 @@ $(document).on('click', '.resort-buttons', function(){
 
         let queryURLGeo = "https://maps.googleapis.com/maps/api/geocode/json?address="+ place + state + "&key=" + apiKeyGeo;
 
-        let apiLiftieURL = "https://cors-anywhere.herokuapp.com/https://liftie.info/api/resort/"+ coloradoResorts[i].id;
+        let apiLiftieURL = "https://cors-anywhere.herokuapp.com/https://liftie.info/api/resort/breck";
 
             $.ajax({
 
