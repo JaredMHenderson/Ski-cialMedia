@@ -1,6 +1,7 @@
 
 //variables for google maps
 
+var infoWindow;
 var mapElement;
 var map;
 var markerArray=[];
@@ -14,6 +15,7 @@ var mapsInitialized = () =>
             center: { lat: 39.7392, lng: -104.9903}
         });
     placesSearch = new google.maps.places.PlacesService(map);
+    infoWindow = new google.maps.InfoWindow();
 }
 
 //iniitalizing firebase data base
@@ -110,13 +112,6 @@ $(function(){
 
     $("#submit").on("click", submitClick);
 
-    // use enter key to submit search //
-    // $("#searchButton").keyup(function(e){  
-    //                   if(e.keyCode===13){
-    //                     submitButtonClick();
-    //                   }
-    //                 });
-
     function getPlaces(index, placesArray)
     {
         placesSearch.textSearch({query: placesArray[index]}, function (placesResult)
@@ -130,13 +125,25 @@ $(function(){
             }
             if(placesResult && placesResult[0])
             {
-                markerArray.push(new google.maps.Marker({
-                    position: placesResult[0].geometry.location,
-                    map: map,
-                    clickable: true,
-                    title: "Click for more details"
-                    
-                }));
+
+                let marker = new google.maps.Marker({
+                  position: placesResult[0].geometry.location,
+                  map: map,
+                  clickable: true
+                });
+
+                marker.addListener('click', () => {
+                    infoWindow.setContent(JSON.stringify(placesResult[0].formatted_address));
+                    console.log(placesResult[0].formatted_address);
+                    infoWindow.setPosition(placesResult[0].geometry.location);
+                    infoWindow.open(map);
+                                                  });
+
+                marker.addListener("mouseout", () => {
+                  infoWindow.close();
+                });
+
+              markerArray.push(marker);
             }
 
             if(index < placesArray.length - 2)
@@ -146,29 +153,42 @@ $(function(){
         });
     }
 
-        function getResort(place)
+    //adds marker to map when resort button is clicked
 
-        {
-        placesSearch.textSearch({query: place}, function (placesResult)
-        {
-            
-                markerArray.forEach(marker =>
-                {
-                    marker.setMap(null);
-                });
-                map.setCenter(placesResult[0].geometry.location);
-            
-            if(placesResult && placesResult[0])
-            {
-                markerArray.push(new google.maps.Marker({
-                    position: placesResult[0].geometry.location,
-                    map: map,
-                    clickable: true,
-                    title: "Click for more details"
-                    
-                }));
-            }
-        });
+    function getResort(resort) {
+      placesSearch.textSearch({ query: resort}, function(
+        placesResult
+      ) {
+         
+          markerArray.forEach(marker => {
+            marker.setMap(null);
+          });
+          map.setCenter(placesResult[0].geometry.location);
+        
+        if (placesResult && placesResult[0]) {
+          let marker = new google.maps.Marker({
+                  position: placesResult[0].geometry.location,
+                  map: map,
+                  clickable: true
+            })
+             marker.addListener("click", () => {
+               infoWindow.setContent(JSON.stringify(placesResult[0].formatted_address));
+               console.log(placesResult[0].formatted_address);
+               infoWindow.setPosition(placesResult[0].geometry.location);
+               infoWindow.open(map);
+             });
+             marker.addListener("mouseout", () => {
+               infoWindow.close();
+             });
+               
+        };
+        
+
+       
+
+        
+      });
+
     }
 
     function capitalizeWords(str)
@@ -178,9 +198,11 @@ $(function(){
 
     }
 
-     
+// Loads maps and weather for user search
+
 
     function submitButtonClick(){
+        
         let searchedPlace = $('#searchBox').val();
         $("#list").empty().removeClass('centralCaBgImage northernCaBgImage utahBgImage weatherText').addClass("searchBgImage").append(`<h1 class="animated fadeIn">${searchedPlace}<br>Weather Info</h1>`);
         
@@ -196,10 +218,10 @@ $(function(){
 
     // array of resorts that show up when each state Button is clicked
 
-    let coloradoResorts = ["Keystone", "Copper Mountain", "Loveland", "Monarch", "Winter Park", "Arapahoe Basin", "Crested Butte", "Vail"];
-    let utahResorts = ["Beaver Mountain", "Brighton Ski Resort", "Dear Valley", "Sundance Resort", "Solitude Mountain", "Powder Mountain", "Park City Mountain", "Wolf Mountain"];
+    let coloradoResorts = ["Keystone", "Copper Mountain", "Loveland", "Winter Park", "Crested Butte", "Vail"];
+    let utahResorts = ["Beaver Mountain", "Brighton Ski Resort", "Dear Valley", "Solitude Mountain", "Powder Mountain"];
     let centralCaResorts = ["Mammoth Mountain", "Badger Pass", "Dodge Ridge", "China Peak"];
-    let northernCaResorts = ["Bear Valley","Northstar California","Sugar Bowl Ski Resort", "Sugar Bowl", "Boreal Mountain Resort", "Dodge Ridge", "Donner Ski Ranch", "Heavenly Mountain"];
+    let northernCaResorts = ["Bear Valley","Northstar California","Sugar Bowl Ski Resort", "Sugar Bowl", "Boreal Mountain Resort", "Dodge Ridge"];
 
 
 //on click function for colorado button
@@ -236,7 +258,7 @@ function coloradoButtonClick () {
         // adds the map of resorts
 
         getPlaces(0, utahResorts);
-        
+    
     };
     $('#utah-button').on("click", utahButtonClick);
 
@@ -251,7 +273,9 @@ function coloradoButtonClick () {
             data-name='${centralCaResorts[i]}'>${centralCaResorts[i]}</button></div>`);
         };
 
-        getPlaces(0, centralCaResorts)
+        // adds the map of resorts
+        getPlaces(0, centralCaResorts);
+
 
     };
 $('#central-california-button').on("click", centralCaButtonClick);
@@ -295,6 +319,9 @@ $('#northern-california-button').on("click", northernCaButtonClick)
 
     });
 
+
+//Onclick funtion for resort buttons, opens map and accesses weather and liftie api
+
 $(document).on('click', '.resort-buttons', function(){ 
 
     //place and state are unique for each button
@@ -302,6 +329,7 @@ $(document).on('click', '.resort-buttons', function(){
     let state = $(this).attr('data-state');
 
     $('#list').empty();
+
 
     getResort(place);
 
