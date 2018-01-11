@@ -19,8 +19,9 @@ body {
 }
 
 .grid {
+	
 	display:grid;
-
+	grid-gap:.5rem;
 	grid-template-rows: 200px 50px 250px 250px 50px;
 	grid-template-columns: 275px 275px 275px 300px;		
 	grid-template-areas:
@@ -29,8 +30,7 @@ body {
 		'map    map    list   intro '
 		'map    map    list   login '
 		'ftr    ftr    ftr    ftr';
-
-	grid-gap:.5rem;
+	
 }
 
 #image {
@@ -444,6 +444,7 @@ body {
 		/*grid-template-columns:1fr 1fr;*/
 		grid-template-rows: 200px 50px 250px 500px 50px;
 		grid-template-columns: 300px 300px 300px;
+
 		grid-template-areas:
 			"header  header  header"
 			"nav      nav    srch"
@@ -484,11 +485,12 @@ body {
 		
 		grid-template-rows: 200px 50px 250px 500px 50px;
 		grid-template-columns: 400px 300px;
+
 		grid-template-areas:
 			"header    header"
-			"nav       srch   "
-			"map       intro   "   
-			"list      login  "
+			"nav       srch"
+			"map       intro"   
+			"list      login"
 			"ftr       ftr";
 	}
 }
@@ -551,6 +553,7 @@ body {
 		/*grid-template-columns: 1fr 1fr 1fr 1fr;*/
 		grid-template-rows: 150px 50px 200px 250px 50px 500px 240px  50px;
 		grid-template-columns: 450px;
+		
 		grid-template-areas:
 			"header"
 			"nav"
