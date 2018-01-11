@@ -189,16 +189,11 @@ $(function(){
     
 
     // array of resorts that show up when each state Button is clicked
-<<<<<<< HEAD
-    let coloradoResorts = [{keystone}, "Copper Mountain", "Loveland", "Monarch", "Arapahoe Basin", "Crested Butte", "Vail"];
-    let utahResorts = ["Beaver Mountain", "Brighton Ski Resort", "Dear Valley", "Sundance Resort", "Solitude Mountain"];
-=======
+
     let coloradoResorts = ["Keystone", "Copper Mountain", "Loveland", "Monarch", "Winter Park", "Arapahoe Basin", "Crested Butte", "Vail"];
     let utahResorts = ["Beaver Mountain", "Brighton Ski Resort", "Dear Valley", "Sundance Resort", "Solitude Mountain", "Powder Mountain", "Park City Mountain", "Wolf Mountain"];
->>>>>>> 09b03cfc9643a572d72f9e101590ef121a5b81ad
     let centralCaResorts = ["Mammoth Mountain", "Badger Pass", "Dodge Ridge", "China Peak"];
     let northernCaResorts = ["Bear Valley","Northstar California","Sugar Bowl Ski Resort", "Sugar Bowl", "Boreal Mountain Resort", "Dodge Ridge", "Donner Ski Ranch", "Heavenly Mountain"];
-    let userButtons = [];
 
 
 //on click function for colorado button
