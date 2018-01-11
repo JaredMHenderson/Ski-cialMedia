@@ -1,6 +1,7 @@
 
 //variables for google maps
 
+var infoWindow;
 var mapElement;
 var map;
 var markerArray=[];
@@ -14,6 +15,7 @@ var mapsInitialized = () =>
             center: { lat: 39.7392, lng: -104.9903}
         });
     placesSearch = new google.maps.places.PlacesService(map);
+    infoWindow = new google.maps.InfoWindow();
 }
 
 //iniitalizing firebase data base
@@ -85,13 +87,21 @@ $(function(){
             }
             if(placesResult && placesResult[0])
             {
-                markerArray.push(new google.maps.Marker({
-                    position: placesResult[0].geometry.location,
-                    map: map,
-                    clickable: true,
-                    title: "Click for more details"
-                    
-                }));
+
+                let marker = new google.maps.Marker({
+                  position: placesResult[0].geometry.location,
+                  map: map,
+                  clickable: true
+                });
+
+                marker.addListener('click', () => {
+                    infoWindow.setContent(JSON.stringify(placesResult[0].formatted_address));
+                    console.log(placesResult[0].formatted_address);
+                    infoWindow.setPosition(placesResult[0].geometry.location);
+                    infoWindow.open(map);
+                                                  });
+
+              markerArray.push(marker);
             }
 
             if(index < placesArray.length - 2)
