@@ -230,9 +230,9 @@ $(function(){
 // Loads maps and weather for user search
 
 
-    function submitButtonClick()
+    function submitButtonClick(event)
     {
-        
+        event.preventDefault();
         let searchedPlace = $('#searchBox').val();
         $("#list").empty().removeClass('centralCaBgImage northernCaBgImage utahBgImage weatherText').addClass("searchBgImage").append(`<h1 class="animated fadeIn">${searchedPlace}<br>Weather Info</h1>`);
         
@@ -255,8 +255,9 @@ $(function(){
 
 
 //on click function for colorado button
-function coloradoButtonClick ()
+function coloradoButtonClick (event)
 {
+    event.preventDefault();
     $('#myVideo').remove();
 
     $("#list").empty().removeClass('list_background centralCaBgImage northernCaBgImage utahBgImage weatherText searchBgImage').addClass('coloradoBgImage').append(`<h1 class="animated fadeIn">Colorado Resorts</h1>`);
@@ -277,8 +278,9 @@ function coloradoButtonClick ()
     $('#colorado-button').on("click", coloradoButtonClick);
 
 //on click function for utah button
-    function utahButtonClick()
+    function utahButtonClick(event)
     {
+        event.preventDefault();
         $('#myVideo').remove();
         $("#list").empty().removeClass('coloradoBgImage centralCaBgImage northernCaBgImage weatherText searchBgImage').addClass('utahBgImage').append(`<h1 class="animated fadeIn">Utah Resorts</h1>`);
 
@@ -297,8 +299,9 @@ function coloradoButtonClick ()
 $('#utah-button').on("click", utahButtonClick);
 
 //on click function for central CA button
-    function centralCaButtonClick()
+    function centralCaButtonClick(event)
     {
+        event.preventDefault();
         $('#myVideo').remove();
         $("#list").empty().removeClass('coloradoBgImage utahCaBgImage northernCaBgImage weatherText searchBgImage').addClass('centralCaBgImage').append(`<h1 class="animated fadeIn">Central California Resorts</h1>`);
 
@@ -318,8 +321,9 @@ $('#central-california-button').on("click", centralCaButtonClick);
 
     //on click function for northern CA button
     
-    function northernCaButtonClick()
+    function northernCaButtonClick(event)
     {
+        event.preventDefault();
         $('#myVideo').remove();
         $("#list").empty().removeClass('coloradoBgImage utahCaBgImage centralCaBgImage weatherText searchBgImage').addClass('northernCaBgImage').append(`<h1 class="animated fadeIn">Northern California Resorts</h1>`);
         for (var i = 0; i < northernCaResorts.length; i++) {
