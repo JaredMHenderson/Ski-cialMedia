@@ -283,7 +283,7 @@ function coloradoButtonClick (event)
     {
         event.preventDefault();
         $('#myVideo').remove();
-        $("#list").empty().removeClass('coloradoBgImage centralCaBgImage northernCaBgImage weatherText searchBgImage').addClass('utahBgImage').append(`<h1 class="animated fadeIn">Utah Resorts</h1>`);
+        $("#list").empty().removeClass('list_background coloradoBgImage centralCaBgImage northernCaBgImage weatherText searchBgImage').addClass('utahBgImage').append(`<h1 class="animated fadeIn">Utah Resorts</h1>`);
 
         for (var i = 0; i < utahResorts.length; i++) {
 
@@ -304,7 +304,7 @@ $('#utah-button').on("click", utahButtonClick);
     {
         event.preventDefault();
         $('#myVideo').remove();
-        $("#list").empty().removeClass('coloradoBgImage utahCaBgImage northernCaBgImage weatherText searchBgImage').addClass('centralCaBgImage').append(`<h1 class="animated fadeIn">Central California Resorts</h1>`);
+        $("#list").empty().removeClass('list_background coloradoBgImage utahCaBgImage northernCaBgImage weatherText searchBgImage').addClass('centralCaBgImage').append(`<h1 class="animated fadeIn">Central California Resorts</h1>`);
 
         for (var i = 0; i < centralCaResorts.length; i++) {
 
@@ -326,7 +326,7 @@ $('#central-california-button').on("click", centralCaButtonClick);
     {
         event.preventDefault();
         $('#myVideo').remove();
-        $("#list").empty().removeClass('coloradoBgImage utahCaBgImage centralCaBgImage weatherText searchBgImage').addClass('northernCaBgImage').append(`<h1 class="animated fadeIn">Northern California Resorts</h1>`);
+        $("#list").empty().removeClass('list_background coloradoBgImage utahCaBgImage centralCaBgImage weatherText searchBgImage').addClass('northernCaBgImage').append(`<h1 class="animated fadeIn">Northern California Resorts</h1>`);
         for (var i = 0; i < northernCaResorts.length; i++) {
 
             $("#list").append(`<div><button class="animated fadeInUp resort-buttons" data-state="Northern California" 
