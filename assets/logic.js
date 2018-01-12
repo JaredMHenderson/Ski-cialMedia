@@ -32,6 +32,49 @@ var config = {
 var firebaseRef = firebase.database();
 
 
+       
+        
+        
+
+function validation(name, email) {
+	if(name === '') {
+		return false;
+	}
+	if(email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+		return false;
+	}
+	return true;
+
+};	
+
+
+function submitClick(event) {
+	event.preventDefault();
+
+	const name = $('#name_input').val().trim();
+	const email = $('#email_input').val().trim();
+	if(validation(name, email)) {
+
+	var ref = firebaseRef.ref('users');
+
+	var data = {
+		name,
+		email
+	};
+
+	ref.push(data);
+	$('#name_input').val("");
+	$('#email_input').val("");
+	$("#alert").text("")
+
+	}
+	else {
+		$("#alert").text("Please enter a valid name and email.")
+	}
+	};
+	$("#submit").on("click", submitClick);
+
+
 $(function(){
 
     // submit user input and push to firebase
@@ -58,6 +101,7 @@ $(function(){
 
     };
 
+
     //user input validation
     function validation(name, email) {
         if (name === '') {
@@ -73,6 +117,12 @@ $(function(){
     $("#submit").on("click", submitClick);
 
     //Adds markers to map for state results
+    // use enter key to submit search //
+    // $("#searchButton").keyup(function(e){  
+    //                   if(e.keyCode===13){
+    //                     submitButtonClick();
+    //                   }
+    //                 });
 
     function getPlaces(index, placesArray)
     {
@@ -254,7 +304,7 @@ $(function(){
 //on click function for colorado button
 function coloradoButtonClick () {
     $('#myVideo').remove();
-    $("#list").empty().removeClass('centralCaBgImage northernCaBgImage utahBgImage weatherText searchBgImage').addClass('coloradoBgImage').append(`<h1 class="animated fadeIn">Colorado Resorts</h1>`);
+    $("#list").empty().removeClass('list_background centralCaBgImage northernCaBgImage utahBgImage weatherText searchBgImage').addClass('coloradoBgImage').append(`<h1 class="animated fadeIn">Colorado Resorts</h1>`);
 
     // creates a button for each resort in the array and gives it a unique id with the name of the resort
 
