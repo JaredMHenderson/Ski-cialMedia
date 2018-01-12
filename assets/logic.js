@@ -233,6 +233,7 @@ $(function(){
     function submitButtonClick(event)
     {
         event.preventDefault();
+        $('#myVideo').remove();
         let searchedPlace = $('#searchBox').val();
         $("#list").empty().removeClass('centralCaBgImage northernCaBgImage utahBgImage weatherText').addClass("searchBgImage").append(`<h1 class="animated fadeIn">${searchedPlace}<br>Weather Info</h1>`);
         
@@ -343,19 +344,19 @@ $('#northern-california-button').on("click", northernCaButtonClick)
 
 //Function for Back Button
 
-    $(document).on('click', '.back-button', function ()
+    $(document).on('click', '.back-button', function (event)
     {
         if($(this).attr('data-place') === 'Colorado') {
-            coloradoButtonClick();
+            coloradoButtonClick(event);
         }
         else if ($(this).attr('data-place') === 'Utah') {
-            utahButtonClick()
+            utahButtonClick(event)
         }
         else if ($(this).attr('data-place') === 'Central California') {
-            centralCaButtonClick()
+            centralCaButtonClick(event)
         }
         else if ($(this).attr('data-place') === 'Northern California') {
-            northernCaButtonClick()
+            northernCaButtonClick(event)
         }
 
     });
@@ -446,7 +447,7 @@ function weatherAPI (searchPlace, place, state, liftieID){
                                  $("#list").append(`<input type='button' class='back-button' style="" data-place='${state}' value=Back /><h1 class='animated fadeIn'>${place}<br>Weather Info</h1>`);
                                 $("#list").append(`<h3 class='animated fadeIn weatherText desc'>${weatherDiscrption}<br><img class='animated fadeIn weatherIcon' src= ${iconURL} alt= ${weatherDiscrption}></img></h3>`);
                                 $("#list").append(`<h3 class='animated fadeIn weatherText'>Current Temp: ${Math.floor(currentTemp)}°F</h3>`);
-                                $("#list").append(`<h3 class='animated fadeIn weatherText'>Current Wind Speed: ${Math.floor(currentWind)}MPH</h3>`);
+                                $("#list").append(`<h3 class='animated fadeIn weatherText'>Current Winds MPH: ${Math.floor(currentWind)}MPH</h3>`);
                                 $("#list").append(`<h3 class='animated fadeIn weatherText'>Sunrise:<br>${sunriseTime.toLocaleString()} (MST)</h3>`);
                                 $("#list").append(`<h3 class='animated fadeIn weatherText'>Sunset:<br>${sunsetTime.toLocaleString()} (MST)</h3>`);
 
@@ -508,7 +509,7 @@ function weatherAPI (searchPlace, place, state, liftieID){
 
                                 $("#list").append(`<h3 class='animated fadeIn weatherText desc'>${weatherDiscrption}<br><img class='animated fadeIn weatherIcon' src= ${iconURL} alt= ${weatherDiscrption}></img></h3>`);
                                 $("#list").append(`<h3 class='animated fadeIn weatherText'>Current Temp: ${Math.floor(currentTemp)}°F</h3>`);
-                                $("#list").append(`<h3 class='animated fadeIn weatherText'>Current Wind Speed: ${Math.floor(currentWind)}MPH</h3>`);
+                                $("#list").append(`<h3 class='animated fadeIn weatherText'>Current Winds MPH: ${Math.floor(currentWind)}MPH</h3>`);
                                 $("#list").append(`<h3 class='animated fadeIn weatherText'>Sunrise:<br>${sunriseTime.toLocaleString()} (MST)</h3>`);
                                 $("#list").append(`<h3 class='animated fadeIn weatherText'>Sunset:<br>${sunsetTime.toLocaleString()} (MST)</h3>`);
 
