@@ -85,11 +85,15 @@ body {
 
 }
 
+#liftieInfo h3 {
+	color:white;
+}
+
 #intro h2 {
 	background-color: #527ea0;
 	font-family:trebuchet ms;
 	font-size:15px;
-	color:white;
+	color:#2b2b2b;
 	margin-left:10px;
 	font-size:25px;
 
@@ -107,8 +111,8 @@ body {
 	margin-right:10px;
 }
 
-#intro hr {
-	background-color:#2b2b2b;
+#intro h3 {
+	background-color:white;
 }
 
 
@@ -331,7 +335,7 @@ body {
 }
 #sign-in h2{
 	font-family:trebuchet ms;
-	color:white;
+	color:#2b2b2b;
 	padding-left:10px;
 	font-size:25px;
 /*	margin-top:5px;
