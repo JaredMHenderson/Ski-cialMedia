@@ -459,7 +459,7 @@ function weatherAPI(searchPlace, place, state, liftieID) {
 
                 let icon = response.weather[0].icon;
 
-                let iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
+                let iconURL = "https://openweathermap.org/img/w/" + icon + ".png";
 
                 let weatherDiscrption = capitalizeWords(response.weather[0].description);
 
@@ -506,7 +506,7 @@ function weatherAPI(searchPlace, place, state, liftieID) {
 
                 let icon = response.weather[0].icon;
 
-                let iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
+                let iconURL = "https://openweathermap.org/img/w/" + icon + ".png";
 
                 let weatherDiscrption = capitalizeWords(response.weather[0].description);
 
