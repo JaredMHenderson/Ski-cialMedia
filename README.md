@@ -41,42 +41,58 @@ TECH USED: HTML, CSS, JavaScript, Google Firebase, CSS Grid Layout
 
 HIGHLIGHT CODE:
 
+I used CSS Grid layout to create the front end styling. I found it very convenient and easy to use.
+.grid {
+
+	
+
+	display:grid;
+
+	grid-gap:.5rem;
+
+	grid-template-rows: 200px 50px 250px 250px 50px;
+
+	grid-template-columns: 275px 275px 275px 300px;		
+
+	grid-template-areas:
+
+		'header header header header'
+
+		'nav    nav    nav    srch  '
+
+		'map    map    list   intro '
+
+		'map    map    list   login '
+
+		'ftr    ftr    ftr    ftr';
+
+	
+
+}
+
+				.grid {
+
+		
+
+		grid-template-rows: 200px 50px 250px 500px 50px;
+
+		grid-template-columns: 400px 300px;
 
 
-var express = require("express");
 
+		grid-template-areas:
 
+			"header    header"
 
+			"nav       srch"
 
-var burgers = require("../models/burgers.js");
+			"map       intro"   
 
+			"list      login"
 
+			"ftr       ftr";
 
-
-var router = express.Router();
-
-
-
-
-router.get("/", function(req, res){
-
-    res.render("index");
-
-});
-
-
-
-
-router.post("/addBurger", function(req, res){
-
-    res.send("post request recieved with burger name " + req.body.burger_name + " and devoured = " + req.body.devoured);
-
-});
-
-
-
-
-module.exports = router;
+	}
 
 
 CONCLUSION: 
